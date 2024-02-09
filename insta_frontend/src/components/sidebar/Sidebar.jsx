@@ -34,7 +34,7 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link to="/profile">
+            <Link to="/notifications">
             <FontAwesomeIcon icon={faHeart} />
               <span>Notifications</span>
             </Link>

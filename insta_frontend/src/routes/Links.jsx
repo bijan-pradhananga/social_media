@@ -3,6 +3,7 @@ import Home from "../components/home_page/Home"
 import Search from "../components/search_page/Search"
 import Profile from "../components/profile_page/Profile"
 import Explore from "../components/explore_page/Explore"
+import Notification from "../components/notification_page/Notification"
 
 export default function Links({}) {
   return (
@@ -11,6 +12,7 @@ export default function Links({}) {
         <Route path="/search" element={<Search/>}/>
         <Route path="/profile" element={<Profile/>} />
         <Route path="/explore" element={<Explore/>}/>
+        <Route path="/notifications" element={<Notification/>}/>
     </Routes>
   )
 }
