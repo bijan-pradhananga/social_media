@@ -1,0 +1,42 @@
+.search_contents{
+    width: 70%;
+    height: 100%;
+    margin: auto;
+}
+
+.search-header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.search_contents input{
+    width: 90%;
+    height: 5vh;
+    border-radius: 10px;
+    outline: none;
+    background-color: inherit;
+    border: 1px solid gray;
+    padding: 12px;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+
+    .search_contents{
+        width: 100%;
+        font-size: smaller;
+    }
+
+    .search-header{
+        padding-left: 3px;
+    }
+
+    .search_contents input{
+        width: 95%;
+    }
+    
+
+
+}

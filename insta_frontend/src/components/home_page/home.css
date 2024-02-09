@@ -1,0 +1,116 @@
+.home_contents{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.timeline_content{
+    width: 75%;
+    height: 100%;
+}
+
+.timeline_card{
+    width: 68%;
+    margin: auto;
+    height: 53rem;
+    padding: 5px;
+    margin-bottom: 1rem;
+}
+
+.timeline_pic{
+    width: 100%;
+    height: 80%;
+    margin-top: 0.8rem;
+    background-color: white;
+}
+
+.timeline_actions{
+    width: 100%;
+    margin-top: 0.3rem;
+    font-size: 26px;
+    padding: 0 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeline_actions span{
+   margin-right: 10px;
+}
+
+.timeline_actions span:last-child{
+    margin-right: 0;
+    font-size: 25px;
+}
+
+.timeline_details{
+    padding: 0 4px;
+}
+
+.timeline_comments{
+    font-size: smaller;
+    color: lightgray;
+}
+
+.suggestion_content{
+    font-weight: 500;
+    width: 25%;
+}
+
+.suggestion_content h4{
+    margin: 1.2rem 0;
+}
+
+/* for cards */
+.universal_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    padding-right: 0.5rem;
+}
+
+.universal_image{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 10px;
+}
+
+.universal_info{
+    display: flex;
+    align-items: center;
+}
+
+.universal_text{
+    font-size: small;
+}
+
+
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .suggestion_content{
+        display: none;
+    }
+
+    .home_contents{
+        width: 100%;
+    }
+
+    .timeline_content{
+        width: 100%;
+    }
+
+    .timeline_card{
+        width: 100%;
+        padding: 0;
+        height: fit-content;
+    }
+
+    .timeline_pic{
+        height: 100vw;
+    }
+
+}
