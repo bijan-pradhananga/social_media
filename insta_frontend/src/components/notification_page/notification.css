@@ -1,0 +1,13 @@
+.notification_contents{
+    width: 70%;
+    height: 100%;
+    margin: auto;
+}
+
+.notification-header{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    padding: 5px 0;
+    margin-bottom: 0.5rem;
+}
