@@ -10,7 +10,7 @@ export default function Profile() {
         </div>
         <div className='profile-info'>
           <h3>bijan_pradhananga</h3>
-          <span>12 posts</span> &nbsp;&nbsp;
+          <span>6 posts</span> &nbsp;&nbsp;
           <span>100 followers</span> &nbsp;&nbsp;
           <span>100 following</span>
         </div>
