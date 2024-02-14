@@ -5,14 +5,14 @@ import Profile from "../components/profile_page/Profile"
 import Explore from "../components/explore_page/Explore"
 import Notification from "../components/notification_page/Notification"
 
-export default function Links({}) {
+export default function Links() {
   return (
     <Routes>
-        <Route path="/" index element={<Home />}/>
-        <Route path="/search" element={<Search/>}/>
-        <Route path="/profile" element={<Profile/>} />
-        <Route path="/explore" element={<Explore/>}/>
-        <Route path="/notifications" element={<Notification/>}/>
+        <Route path="" element={<Home />} />
+        <Route path="/search" index element={<Search />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/notifications" element={<Notification />} />
     </Routes>
   )
 }

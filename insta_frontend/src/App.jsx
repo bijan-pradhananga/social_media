@@ -1,18 +1,10 @@
-import Sidebar from "./components/sidebar/Sidebar"
 import './App.css'
-import Links from "./routes/Links"
+import Outer_Links from "./routes/Outer_Links"
 
 function App() {
   return (
     <>
-      <div className="container">
-        <div className="sidebar">
-          <Sidebar></Sidebar>
-        </div>
-        <div className="contents">
-            <Links/>
-        </div>
-      </div>
+      <Outer_Links/>
     </>
   )
 }
