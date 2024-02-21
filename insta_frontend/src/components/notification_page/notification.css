@@ -17,7 +17,7 @@
     height: 5vh;
     line-height: 4.7vh;
     display: flex;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
 }
 
 .notification-card img{
@@ -42,7 +42,6 @@
         align-items: center;
         padding-left: 8px;
         padding-right: 8px;
-        margin-bottom: 1.5rem;
     }
 
 }
