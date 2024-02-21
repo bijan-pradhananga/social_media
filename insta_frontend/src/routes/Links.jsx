@@ -5,6 +5,7 @@ import Profile from "../components/profile_page/Profile"
 import Explore from "../components/explore_page/Explore"
 import Notification from "../components/notification_page/Notification"
 
+
 export default function Links() {
   return (
     <Routes>
@@ -13,6 +14,7 @@ export default function Links() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/notifications" element={<Notification />} />
+        
     </Routes>
   )
 }
