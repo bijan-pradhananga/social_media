@@ -31,7 +31,7 @@ export default function Popup({setPopup}) {
                         </div>
                     </div>
                     <div className="popup-footer">
-                        <button>Post</button>
+                        <button>Share</button>
                     </div>
                 </div>
             </div>
