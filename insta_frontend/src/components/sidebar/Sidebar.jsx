@@ -50,9 +50,10 @@ export default function Sidebar() {
         </header>
 
         <footer>
+          <Link to="/login">
           <FontAwesomeIcon icon={faSignOutAlt} />
           <span>Logout</span>
-          
+          </Link>
         </footer>
       </nav>
 
