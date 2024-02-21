@@ -3,7 +3,7 @@ import { Routes,Route } from 'react-router-dom'
 import Login from '../components/login_page/Login'
 import Register from '../components/register_page/Register'
 import MainPage from '../components/main_page/MainPage'
-
+import NotFound from "../components/notFound_page/NotFound"
 export default function Outer_Links() {
   return (
     <Routes>
