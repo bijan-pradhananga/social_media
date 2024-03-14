@@ -63,7 +63,7 @@ export default function Register() {
         <input type="text" id='name' name='name' value={formData.name} onChange={handleChange} required/><br />
         <label htmlFor="username">Username</label><br />
         <input type="text" id='username' name='username' value={formData.username} onChange={handleChange} required/><br />
-        <label htmlFor="emai;">Email</label><br />
+        <label htmlFor="email">Email</label><br />
         <input type="email" id='email' name='email' value={formData.email} onChange={handleChange} required/><br />
         <label htmlFor="password">Password</label><br />
         <input type="password" id='password' name='password' value={formData.password} onChange={handleChange} required/><br />
