@@ -15,8 +15,8 @@ class UserController extends Controller
             'name'  => 'required|max:100',
             'username'   => 'required|max:100',
             'email' => 'required|email|max:100',
-            'password' => 'required|string|min:8',
-            'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'password' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', 
         ]);
         if ($validator->fails()) {
             return response()->json([
