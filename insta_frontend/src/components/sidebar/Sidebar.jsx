@@ -3,8 +3,15 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCompass, faHome, faMagnifyingGlass, faUser,faSignOutAlt ,faHeart} from '@fortawesome/free-solid-svg-icons'
 import './sidebar.css'
+import AuthUser from '../authentication/AuthUser'
 
 export default function Sidebar() {
+  const {token,logout} = AuthUser();
+  const logoutUser = () =>{
+    if (token!=undefined) {
+      logout();
+    }
+  }
   return (
  
       <nav>
@@ -50,7 +57,7 @@ export default function Sidebar() {
         </header>
 
         <footer>
-          <Link to="/login">
+          <Link onClick={logoutUser} to="/login" >
           <FontAwesomeIcon icon={faSignOutAlt} />
           <span>Logout</span>
           </Link>
