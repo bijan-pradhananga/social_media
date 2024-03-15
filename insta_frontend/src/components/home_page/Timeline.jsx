@@ -10,13 +10,13 @@ export default function timeline() {
   return (
       <div className='timeline_content'>
       <div className="timeline_upload">
-          <img src={bijan} alt="" srcset="" />
+          <img src={bijan} alt="" />
           <div onClick={()=>{setPopup(true)}} className="timeline_upload_input">
             Create a new post
           </div>
       </div>
         {array.map((arr, index) => (
-          <div className='timeline_card'>
+          <div className='timeline_card' key={index}>
             <div className="timeline_info universal_info">
               <div className="timeline_image universal_image">
                 <img src="" alt="" />
@@ -27,7 +27,7 @@ export default function timeline() {
               </div>
             </div>
             <div className="timeline_pic ">
-              <img src="" alt="" srcset="" />
+              <img src="" alt="" />
             </div>
             <div className="timeline_actions">
               <div>
