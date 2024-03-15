@@ -22,13 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/users', [UserController::class,'store']);
+Route::get('users/{id}/posts', [UserController::class, 'getUserPosts']);
+
 Route::post('/posts', [PostController::class,'store']);
 
-
 Route::group([
-
     'middleware' => 'api',
-
 ], function ($router) {
 
     Route::post('login', [AuthController::class,'login']);

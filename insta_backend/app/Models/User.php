@@ -21,6 +21,11 @@ class User extends Authenticatable implements JWTSubject
         'image'
     ];
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

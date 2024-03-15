@@ -47,4 +47,18 @@ class UserController extends Controller
             ], 500);
         }
     }
+
+    public function getUserPosts($id)
+    {
+        // Retrieve the user by ID
+        $user = User::find($id);
+        // Check if user exists
+        if (!$user) {
+            return response()->json(['status' => 404,'message' => 'User not found'], 404);
+        }
+        // Retrieve all posts of the user
+        $posts = $user->posts;
+        // Return the posts as JSON response
+        return response()->json(['status' => 200,'posts' => $posts], 200);
+    }
 }
