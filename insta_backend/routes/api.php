@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -37,3 +38,6 @@ Route::group([
     Route::post('me', [AuthController::class,'me']);
 
 });
+
+Route::get('/followers', [FollowerController::class, 'checkFollow']);
+Route::post('/followers', [FollowerController::class, 'toggleFollow']);
