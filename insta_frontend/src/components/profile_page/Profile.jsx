@@ -40,7 +40,8 @@ export default function Profile({cUser}) {
 
   return (
     <div className='profile_contents'>
-      <ProfileHeader user={user} cUser={cUser} id={id} userPosts={user}/>
+      
+      <ProfileHeader user={user} cUser={cUser} id={id} userPosts={userPosts}/>
       <ProfileBody userPosts={userPosts}/>
 
     </div>
