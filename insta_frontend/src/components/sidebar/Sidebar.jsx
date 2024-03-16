@@ -18,7 +18,7 @@ export default function Sidebar() {
         <header>
           <div className="image-text">
             <span className="image">
-              <h1 className='logo'>LOGO</h1>
+              <h1 className='logo'>Insta Clone</h1>
             </span>
           </div>
           <ul>
