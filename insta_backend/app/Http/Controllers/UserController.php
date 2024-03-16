@@ -16,7 +16,7 @@ class UserController extends Controller
             'username'   => 'required|max:100',
             'email' => 'required|email|max:100',
             'password' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', 
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -33,7 +33,7 @@ class UserController extends Controller
                 'password'        => Hash::make($request->password),
                 'image'         => $imgName
             ]);
-            $image->move('images/',$imgName);
+            $image->move('images/', $imgName);
         }
         if ($user) {
             return response()->json([
@@ -48,17 +48,29 @@ class UserController extends Controller
         }
     }
 
+    public function getUserById($id)
+    {
+        // Retrieve the user by ID
+        $user = User::find($id);
+        // Check if user exists
+        if (!$user) {
+            return response()->json(['status' => 404, 'message' => 'User not found'], 404);
+        }
+        // Return the user's information as JSON response
+        return response()->json(['status' => 200, 'user' => $user], 200);
+    }
+
     public function getUserPosts($id)
     {
         // Retrieve the user by ID
         $user = User::find($id);
         // Check if user exists
         if (!$user) {
-            return response()->json(['status' => 404,'message' => 'User not found'], 404);
+            return response()->json(['status' => 404, 'message' => 'User not found'], 404);
         }
         // Retrieve all posts of the user
         $posts = $user->posts;
         // Return the posts as JSON response
-        return response()->json(['status' => 200,'posts' => $posts], 200);
+        return response()->json(['status' => 200, 'posts' => $posts], 200);
     }
 }
