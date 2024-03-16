@@ -6,7 +6,7 @@ import './sidebar.css'
 import AuthUser from '../authentication/AuthUser'
 
 export default function Sidebar() {
-  const {token,logout} = AuthUser();
+  const {user,token,logout} = AuthUser();
   const logoutUser = () =>{
     if (token!=undefined) {
       logout();
@@ -47,7 +47,7 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link to="/profile">
+            <Link to={`/profile/${user.id}`}>
             <FontAwesomeIcon icon={faUser} />
               <span>Profile</span>
             </Link>

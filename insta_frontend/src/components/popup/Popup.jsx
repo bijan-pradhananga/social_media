@@ -3,10 +3,8 @@ import axios from 'axios'
 import './popup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faUpload } from '@fortawesome/free-solid-svg-icons'
-import AuthUser from '../authentication/AuthUser';
 
-export default function Popup({setPopup}) {
-    const {user} = AuthUser();
+export default function Popup({user,setPopup}) {
     const [formData, setFormData] = useState({
         user_id: user.id,
         caption: '',
@@ -69,7 +67,7 @@ export default function Popup({setPopup}) {
                     <form action="" method="post" onSubmit={handleSubmit}>
                     <div className="popup-body">
                         <div className="popup-info">
-                            <img src="" alt="" />
+                            <img src={`http://127.0.0.1:8000/images/${user.image}`} alt="" />
                             <span>{user.name}</span>
                         </div>
                         <div className="popup-body-caption">

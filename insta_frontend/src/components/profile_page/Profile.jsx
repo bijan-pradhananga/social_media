@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import './profile.css'
 import AuthUser from '../authentication/AuthUser';
 
 export default function Profile() {
-  const { user } = AuthUser();
+  const { id } = useParams();
+  const [user,setUser] = useState([])
   const [userPosts, setUserPosts] = useState([]);
+
+  const getUser = async () =>{
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/users/${id}`);
+      if (response.status === 200) {
+        setUser(response.data.user);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const getUserPosts = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/users/${user.id}/posts`);
+      const response = await axios.get(`http://127.0.0.1:8000/api/users/${id}/posts`);
       if (response.status === 200) {
         setUserPosts(response.data.posts);
       }
@@ -18,8 +32,10 @@ export default function Profile() {
   }
 
   useEffect(() => {
+    getUser();
     getUserPosts();
-  }, [])
+  }, [id])
+  
   return (
     <div className='profile_contents'>
       <div className='profile-header'>
@@ -38,11 +54,14 @@ export default function Profile() {
         <div className="profile-nav-btn">Saved</div>
       </div>
       <div className="profile-body">
-        {userPosts.map((post, index) => (
-          <div className="profile-body-img" key={index}>
-            <img src={`http://127.0.0.1:8000/posts/${post.image}`} />
-          </div>
-        ))}
+        {userPosts.length > 0 && (
+          userPosts.map((post, index) => (
+            <div className="profile-body-img" key={index}>
+              <img src={`http://127.0.0.1:8000/posts/${post.image}`} />
+            </div>
+          ))
+        )}
+
       </div>
 
     </div>

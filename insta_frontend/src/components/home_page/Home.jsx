@@ -3,11 +3,11 @@ import Timeline from './Timeline';
 import Suggestion from './Suggestion';
 import './home.css'
 
-export default function Home() {
+export default function Home({user}) {
   return (
     <>
       <div className="home_contents">
-        <Timeline ></Timeline>
+        <Timeline user={user}></Timeline>
         <Suggestion></Suggestion>
       </div>
     </>

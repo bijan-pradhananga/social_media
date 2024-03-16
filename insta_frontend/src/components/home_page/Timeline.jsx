@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-import bijan from'./bijan.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faComment, faBookmark } from '@fortawesome/free-regular-svg-icons'
 import Popup from '../popup/Popup';
 const array = [1, 2, 3];
 
-export default function timeline() {
+export default function timeline({user}) {
   const [popup,setPopup] = useState(false);
   return (
       <div className='timeline_content'>
       <div className="timeline_upload">
-          <img src={bijan} alt="" />
+          <img src={`http://127.0.0.1:8000/images/${user.image}`} alt="" />
           <div onClick={()=>{setPopup(true)}} className="timeline_upload_input">
             Create a new post
           </div>
@@ -49,7 +48,7 @@ export default function timeline() {
             </div>
           </div>
         ))}
-        {popup && <Popup setPopup={setPopup}/>}
+        {popup && <Popup user={user} setPopup={setPopup}/>}
       </div>
   )
 }
