@@ -38,7 +38,7 @@ export default function timeline({user}) {
                 </span>
               </div>
               <span>
-                <FontAwesomeIcon icon={faBookmark} />
+                {/* <FontAwesomeIcon icon={faBookmark} /> */}
               </span>
             </div>
             <div className="timeline_details">

@@ -12,7 +12,7 @@ export default function Links() {
     <Routes>
         <Route path="" element={<Home user={user} />} />
         <Route path="/search" index element={<Search />} />
-        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/profile/:id" element={<Profile cUser={user}/>} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/notifications" element={<Notification />} />
         
