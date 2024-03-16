@@ -1,7 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProfileButton from './ProfileButton'
+import axios from 'axios';
 
 export default function ProfileHeader({user,cUser,id,userPosts}) {
+    const [followerCount, setFollowerCount] = useState(0);
+    const [followingCount, setFollowingCount] = useState(0);
+    const fetchFollowerCount = async () => {
+        try {
+          const response = await axios.get(`http://127.0.0.1:8000/api/followers/follower-count/${id}`);
+          setFollowerCount(response.data.follower_count);
+        } catch (error) {
+          console.error('Error fetching follower count:', error);
+        }
+      };
+  
+      const fetchFollowingCount = async () => {
+        try {
+          const response = await axios.get(`http://127.0.0.1:8000/api/followers/following-count/${id}`);
+          setFollowingCount(response.data.following_count);
+        } catch (error) {
+          console.error('Error fetching following count:', error);
+        }
+      };
+  
+
+    useEffect(() => {
+        fetchFollowerCount();
+        fetchFollowingCount();
+      }, [id]);
     return (
         <>
             <div className='profile-header'>
@@ -11,11 +37,11 @@ export default function ProfileHeader({user,cUser,id,userPosts}) {
                 <div className='profile-info'>
                     <div style={{ display: 'flex', marginBottom: '0.6rem' }}>
                         <h3>{user.username}</h3>
-                        <ProfileButton cUser={cUser} id={id} />
+                        <ProfileButton fetchFollowerCount={fetchFollowerCount} cUser={cUser} id={id} />
                     </div>
                     <span>{userPosts.length} posts</span> &nbsp;&nbsp;
-                    <span>100 followers</span> &nbsp;&nbsp;
-                    <span>100 following</span>
+                    <span>{followerCount} followers</span> &nbsp;&nbsp;
+                    <span>{followingCount} following</span>
                 </div>
             </div>
             <div className="profile-nav"></div>

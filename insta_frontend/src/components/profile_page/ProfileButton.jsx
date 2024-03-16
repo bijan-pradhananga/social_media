@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ProfileButton = ({ cUser, id }) => {
+const ProfileButton = ({ cUser, id , fetchFollowerCount }) => {
   const [follows, setFollows] = useState(false);
 
   useEffect(() => {
@@ -25,12 +25,13 @@ const ProfileButton = ({ cUser, id }) => {
     try {
         const response = await axios.post(`http://127.0.0.1:8000/api/followers/?follower_id=${cUser.id}&followed_id=${id}`);
         if (response.status === 200) {
-        if (response.data.follows) {
-            setFollows(true)
-        }else{
-            setFollows(false)
+            if (response.data.follows) {
+                setFollows(true)
+            }else{
+                setFollows(false)
+            }
+            fetchFollowerCount();
         }
-    }
       } catch (error) {
         console.error('Something went Wrong');
       }
