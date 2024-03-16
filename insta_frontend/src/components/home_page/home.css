@@ -50,14 +50,15 @@
 .timeline_card{
     width: 68%;
     margin: auto;
-    height: 53rem;
+    height: 42rem;
     padding: 5px;
     margin-bottom: 1rem;
+    /* background-color: red; */
 }
 
 .timeline_pic{
     width: 100%;
-    height: 80%;
+    height: 73%;
     margin-top: 0.8rem;
     background-color: white;
 }

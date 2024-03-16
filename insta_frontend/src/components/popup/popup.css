@@ -76,6 +76,21 @@
     height: 53.5vh;
     display: grid;
     place-items: center;
+    position: relative;
+}
+
+.popup-body-imgUpload label{
+    cursor: pointer;
+}
+
+.popup-body-imgUpload img{
+    width: 100%;
+    height: 53.5vh;
+    object-fit: cover;
+}
+
+.popup-body-imgUpload  .cross-btn {
+    top: 5px;
 }
 
 .popup-footer {
