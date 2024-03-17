@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import './profile.css'
-import ProfileButton from './ProfileButton';
 import ProfileBody from './ProfileBody';
 import ProfileHeader from './ProfileHeader';
 
