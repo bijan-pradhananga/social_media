@@ -13,7 +13,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        if ($posts->isEmpty()) {
+            return response()->json(['message' => 'No posts found'], 404);
+        } else {
+            return response()->json(['posts' => $posts], 200);
+        }
     }
 
     /**
