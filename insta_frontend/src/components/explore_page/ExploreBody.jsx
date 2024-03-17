@@ -8,8 +8,10 @@ export default function ExploreBody() {
   const getPosts = async () =>{
     try {
       const response = await axios.get('http://127.0.0.1:8000/api/posts');
-      if (response.status==200) {
-        setPosts(response.data.posts);
+      if (response.status === 200) {
+        // Reverse the posts array before setting the state
+        const reversedPosts = response.data.posts.reverse();
+        setPosts(reversedPosts);
       }
     } catch (error) {
       console.log(error);
@@ -22,7 +24,7 @@ export default function ExploreBody() {
 
   return (
     <div className="explore-body">
-    {posts.reverse().map((post,index)=>
+    {posts.map((post,index)=>
       <div className='explore-body-img' key={index}>
           <img src={`http://127.0.0.1:8000/posts/${post.image}`} />
       </div>
