@@ -20,7 +20,6 @@ export default function suggestion() {
             <FontAwesomeIcon icon={faPlus} />
           </div>
         </div>
-      
       </div>
 
     </>
