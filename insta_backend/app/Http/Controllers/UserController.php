@@ -73,4 +73,20 @@ class UserController extends Controller
         // Return the posts as JSON response
         return response()->json(['status' => 200, 'posts' => $posts], 200);
     }
+
+
+    public function searchUser($searchValue)
+    {
+        $users = User::where(function ($query) use ($searchValue) {
+            $query->where('username', 'like', '%' . $searchValue . '%')
+                  ->orWhere('name', 'like', '%' . $searchValue . '%');
+        })->get();
+    
+        if ($users->isNotEmpty()) {
+            return response()->json(['status' => 200, 'users' => $users], 200);
+        } else {
+            return response()->json(['status' => 404, 'message' => 'No users found'], 404);
+        }
+    }
+    
 }
