@@ -29,7 +29,7 @@ Route::prefix('users')->group(function () {
     Route::get('/{id}/posts', [UserController::class, 'getUserPosts']);
 });
 
-
+Route::get('/posts', [PostController::class, 'index']);
 Route::post('/posts', [PostController::class,'store']);
 
 Route::group([
