@@ -56,6 +56,7 @@ export default function Popup({ user, setPopup }) {
             const response = await axios.post('http://127.0.0.1:8000/api/posts', fn);
             if (response.status === 200) {
                 alert(response.data.message);
+                setPopup(false);
             }
         } catch (error) {
             console.log(error);
