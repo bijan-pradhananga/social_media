@@ -5,7 +5,6 @@ import SearchResults from './SearchResults'
 import ExploreBody from '../explore_page/ExploreBody'
 import SearchHeader from './SearchHeader'
 
-const array = [1, 2, 3, 4, 5, 6]
 export default function Search() {
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResults] = useState([]);
