@@ -1,10 +1,10 @@
 import React from 'react'
 import SearchCard from './SearchCard'
 
-export default function ({searchResults}) {
+export default function ({searchResults,empty}) {
     return (
         <div className="searchResults">
-            {(searchResults.length === 0) ? (
+            {(empty) ? (
                 <h3>No results found</h3>
             ) : (
                 searchResults.map((user, index) => (

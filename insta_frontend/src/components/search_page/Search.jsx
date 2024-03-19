@@ -9,6 +9,7 @@ const array = [1, 2, 3, 4, 5, 6]
 export default function Search() {
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResults] = useState([]);
+  const [empty,setEmpty] = useState(false)
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -16,12 +17,11 @@ export default function Search() {
 
   const searchUser = async () => {
     try {
-      if (search.trim() !== '') {
-        const response = await axios.get(`http://127.0.0.1:8000/api/users/search/${search}`);
+        const response = await axios.get(`http://127.0.0.1:8000/api/users/search/${search.trim()}`);
         setSearchResults(response.data.users);
-      }
+        setEmpty(false)
     } catch (error) {
-      console.error('Error searching for user:', error);
+        setEmpty(true)
     }
   };
 
@@ -30,6 +30,7 @@ export default function Search() {
       if (search.trim() !== '') {
         searchUser();
       } else {
+        setEmpty(false);
         setSearchResults([]);
       }
     }, 500);
@@ -42,7 +43,7 @@ export default function Search() {
       {search === '' ? (
           <ExploreBody/>
       ) : (
-          <SearchResults searchResults={searchResults}/>
+          <SearchResults empty={empty} searchResults={searchResults}/>
       )}
     </div>
   )
