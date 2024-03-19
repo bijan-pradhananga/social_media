@@ -4,7 +4,7 @@ import './popup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faUpload } from '@fortawesome/free-solid-svg-icons'
 
-export default function Popup({ user, setPopup }) {
+export default function Popup({ user, setPopup ,fetchPosts}) {
     const [formData, setFormData] = useState({
         user_id: user.id,
         caption: '',
@@ -56,6 +56,7 @@ export default function Popup({ user, setPopup }) {
             const response = await axios.post('http://127.0.0.1:8000/api/posts', fn);
             if (response.status === 200) {
                 alert(response.data.message);
+                fetchPosts();
                 setPopup(false);
             }
         } catch (error) {

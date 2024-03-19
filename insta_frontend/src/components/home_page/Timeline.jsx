@@ -1,54 +1,30 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faComment, faBookmark } from '@fortawesome/free-regular-svg-icons'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import Popup from '../popup/Popup';
-const array = [1, 2, 3];
+import TimelineUploadBtn from './TimelineUploadBtn';
+import TimelineCard from './TimelineCard';
 
-export default function timeline({user}) {
-  const [popup,setPopup] = useState(false);
+export default function timeline({ user }) {
+  const [timelinePosts, setTimelinePosts] = useState([]);
+  const [popup, setPopup] = useState(false);
+
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/posts/follows/${user.id}`);
+      setTimelinePosts(response.data.posts);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
   return (
-      <div className='timeline_content'>
-      <div className="timeline_upload">
-          <img src={`http://127.0.0.1:8000/images/${user.image}`} alt="" />
-          <div onClick={()=>{setPopup(true)}} className="timeline_upload_input">
-            Create a new post
-          </div>
-      </div>
-        {array.map((arr, index) => (
-          <div className='timeline_card' key={index}>
-            <div className="timeline_info universal_info">
-              <div className="timeline_image universal_image">
-                <img src="" alt="" />
-              </div>
-              <div className="timeline_text universal_text">
-                <span>Andrew Garfield</span> <br />
-                <span>USA</span>
-              </div>
-            </div>
-            <div className="timeline_pic ">
-              <img src="" alt="" />
-            </div>
-            <div className="timeline_actions">
-              <div>
-                <span>
-                  <FontAwesomeIcon icon={faHeart} />
-                </span>
-                <span>
-                  <FontAwesomeIcon icon={faComment} />
-                </span>
-              </div>
-              <span>
-                {/* <FontAwesomeIcon icon={faBookmark} /> */}
-              </span>
-            </div>
-            <div className="timeline_details">
-              <div className="timeline_likes">500 likes</div>
-              <div><b>Andrew</b> Here's my Pic</div>
-              <div className="timeline_comments">View Comments</div>
-            </div>
-          </div>
-        ))}
-        {popup && <Popup user={user} setPopup={setPopup}/>}
-      </div>
+    <div className='timeline_content'>
+      <TimelineUploadBtn user={user} setPopup={setPopup} />
+      <TimelineCard timelinePosts={timelinePosts}/>
+      {popup && <Popup user={user} fetchPosts={fetchPosts} setPopup={setPopup} />}
+    </div>
   )
 }

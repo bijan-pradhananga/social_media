@@ -116,6 +116,12 @@
     margin-right: 10px;
 }
 
+.universal_image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
 .universal_info{
     display: flex;
     align-items: center;
@@ -123,6 +129,12 @@
 
 .universal_text{
     font-size: small;
+}
+
+.timeline_pic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
