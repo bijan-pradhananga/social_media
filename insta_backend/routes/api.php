@@ -29,9 +29,12 @@ Route::prefix('users')->group(function () {
     Route::get('/{id}/posts', [UserController::class, 'getUserPosts']);
 });
 
-Route::get('/posts', [PostController::class, 'index']);
-Route::post('/posts', [PostController::class,'store']);
 
+Route::prefix('posts')->group(function () {
+    Route::get('/', [PostController::class, 'index']);
+    Route::get('/follows/{followerId}', [PostController::class, 'getPostsForFollower']);
+    Route::post('/', [PostController::class,'store']);
+});
 Route::group([
     'middleware' => 'api',
 ], function ($router) {

@@ -21,12 +21,23 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // function to get post of users you follow 
+    public function getPostsForFollower($followerId)
     {
-        //
+        $posts = Post::select('posts.*', 'users.name', 'users.username', 'users.image as user_img')
+        ->leftJoin('users', 'posts.user_id', '=', 'users.id')
+        ->leftJoin('followers', function ($join) use ($followerId) {
+            $join->on('users.id', '=', 'followers.followed_id')
+                 ->where('followers.follower_id', $followerId);
+        })
+        ->where(function ($query) use ($followerId) {
+            $query->where('followers.follower_id', $followerId)
+                  ->orWhere('users.id', $followerId);
+        })
+        ->orderBy('posts.created_at', 'desc')
+        ->get();
+
+        return response()->json(['posts' => $posts], 200);
     }
 
     /**
