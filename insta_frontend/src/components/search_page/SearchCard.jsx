@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function SearchCard({user,index}) {
   return (
     <Link to={`/profile/${user.id}`}>
-    <div className="search_card" key={index}>
+    <div className="search_card" >
         <div className="search_info">
             <div className="search_image">
                 <img src={`http://127.0.0.1:8000/images/${user.image}`} alt="" />

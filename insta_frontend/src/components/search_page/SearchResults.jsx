@@ -8,7 +8,7 @@ export default function ({searchResults,empty}) {
                 <h3>No results found</h3>
             ) : (
                 searchResults.map((user, index) => (
-                    <SearchCard user={user} index={index}/>
+                    <SearchCard key={index} user={user} index={index}/>
                 ))
             )}
         </div>
