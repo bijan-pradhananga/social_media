@@ -1,5 +1,5 @@
 import React from 'react'
-import Timeline from './Timeline';
+import Timeline from './Timeline/Timeline';
 import Suggestion from './Suggestion';
 import './home.css'
 
