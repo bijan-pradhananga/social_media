@@ -50,6 +50,18 @@ class PostController extends Controller
         return response()->json(['posts' => $posts], 200);
     }
 
+    // function to get posts and its user details by id
+    public function getPostsAndUsersById($id)
+    {
+        $posts = Post::select('posts.*', 'users.name', 'users.username', 'users.image AS user_img')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->where('posts.user_id', $id) // Filter posts by user_id
+            ->orderBy('posts.created_at', 'desc')
+            ->get();
+    
+        return response()->json(['posts' => $posts], 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
