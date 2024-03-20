@@ -23,9 +23,9 @@ export default function Profile({cUser}) {
 
   const getUserPosts = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/users/${id}/posts`);
+      const response = await axios.get(`http://127.0.0.1:8000/api/posts/users/${id}`);
       if (response.status === 200) {
-        setUserPosts(response.data.posts.reverse());
+        setUserPosts(response.data.posts);
       }
     } catch (error) {
       console.log(error);
