@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './PostPopup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faUpload } from '@fortawesome/free-solid-svg-icons'
-export default function PostPopup({ setImgPopup , setImgPopupDetails}) {
+export default function PostPopup({ setImgPopup , post}) {
+
+    // useEffect(()=>{
+    //     console.log(post);
+    // },[post])
     return (
         <div className='modal'>
             <div className="overlay">
@@ -10,10 +14,10 @@ export default function PostPopup({ setImgPopup , setImgPopupDetails}) {
                     onClick={() => { setImgPopup(false) }} />
                 <div className="popup2">
                     <div className='popup-imgPart'>
-
+                        <img src={`http://127.0.0.1:8000/posts/${post.image}`} alt={post.image}/>
                     </div>
                     <div className="popup-txtPart">
-                        <h1></h1>
+                        <h1>{post.name}</h1>
                     </div>
                 </div>
             </div>

@@ -1,34 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
-const array = [1, 2, 3, 4, 5, 6]
+import { ImgPopupContext } from '../../routes/Links'
+import PostPopup from '../popup/PostPopup';
 
 export default function ExploreBody() {
-  const [posts,setPosts] = useState([]);
-
-  const getPosts = async () =>{
+  const [posts, setPosts] = useState([]);
+  const { imgPopup, setImgPopup, imgPopupDetails, setImgPopupDetails } = useContext(ImgPopupContext);
+  const getPosts = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/posts');
+      const response = await axios.get('http://127.0.0.1:8000/api/posts/users');
       if (response.status === 200) {
-        // Reverse the posts array before setting the state
-        const reversedPosts = response.data.posts.reverse();
-        setPosts(reversedPosts);
+        setPosts(response.data.posts);
       }
     } catch (error) {
       console.log(error);
     }
   }
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     getPosts();
-  },[])
+  }, [])
 
   return (
-    <div className="explore-body">
-    {posts.map((post,index)=>
-      <div className='explore-body-img' key={index}>
-          <img src={`http://127.0.0.1:8000/posts/${post.image}`} />
+    <>
+      <div className="explore-body">
+        {posts.map((post, index) =>
+          <div className='explore-body-img' key={index} onClick={() => { setImgPopup(true); setImgPopupDetails(post)  }}>
+            <img src={`http://127.0.0.1:8000/posts/${post.image}`} />
+          </div>
+        )}
       </div>
-    )}
-  </div>
+      {imgPopup && <PostPopup  setImgPopup={setImgPopup} post={imgPopupDetails} />}
+    </>
+
+
   )
 }

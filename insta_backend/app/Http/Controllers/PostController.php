@@ -25,17 +25,27 @@ class PostController extends Controller
     public function getPostsForFollower($followerId)
     {
         $posts = Post::select('posts.*', 'users.name', 'users.username', 'users.image as user_img')
-        ->leftJoin('users', 'posts.user_id', '=', 'users.id')
-        ->leftJoin('followers', function ($join) use ($followerId) {
-            $join->on('users.id', '=', 'followers.followed_id')
-                 ->where('followers.follower_id', $followerId);
-        })
-        ->where(function ($query) use ($followerId) {
-            $query->where('followers.follower_id', $followerId)
-                  ->orWhere('users.id', $followerId);
-        })
-        ->orderBy('posts.created_at', 'desc')
-        ->get();
+            ->leftJoin('users', 'posts.user_id', '=', 'users.id')
+            ->leftJoin('followers', function ($join) use ($followerId) {
+                $join->on('users.id', '=', 'followers.followed_id')
+                    ->where('followers.follower_id', $followerId);
+            })
+            ->where(function ($query) use ($followerId) {
+                $query->where('followers.follower_id', $followerId)
+                    ->orWhere('users.id', $followerId);
+            })
+            ->orderBy('posts.created_at', 'desc')
+            ->get();
+
+        return response()->json(['posts' => $posts], 200);
+    }
+
+    // function to get posts and its user details
+    public function getPostsAndUsers()
+    {
+        $posts = Post::select('posts.*', 'users.name', 'users.username', 'users.image AS user_img')
+            ->join('users', 'posts.user_id', '=', 'users.id')->orderBy('posts.created_at', 'desc')
+            ->get();
 
         return response()->json(['posts' => $posts], 200);
     }
@@ -48,7 +58,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id'  => 'exists:users,id',
             'caption'   => 'nullable|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', 
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -63,7 +73,7 @@ class PostController extends Controller
                 'caption'   => $request->caption,
                 'image'         => $imgName
             ]);
-            $image->move('posts/',$imgName);
+            $image->move('posts/', $imgName);
         }
         if ($post) {
             return response()->json([
