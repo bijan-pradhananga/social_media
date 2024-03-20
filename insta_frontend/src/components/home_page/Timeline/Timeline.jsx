@@ -9,6 +9,7 @@ export default function timeline({ user }) {
   const [timelinePosts, setTimelinePosts] = useState([]);
   const [popup, setPopup] = useState(false);
   const [imgPopup,setImgPopup] = useState(false)
+  const [imgPopupDetails,setImgPopupDetails] = useState()
   const fetchPosts = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:8000/api/posts/follows/${user.id}`);
@@ -24,7 +25,7 @@ export default function timeline({ user }) {
   return (
     <div className='timeline_content'>
       <TimelineUploadBtn user={user} setPopup={setPopup} />
-      <TimelineCard setImgPopup={setImgPopup} timelinePosts={timelinePosts}/>
+      <TimelineCard setImgPopup={setImgPopup}  timelinePosts={timelinePosts}/>
       {popup && <Popup user={user} fetchPosts={fetchPosts} setPopup={setPopup} />}
       {imgPopup && <PostPopup setImgPopup={setImgPopup} />}
     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import './PostPopup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faUpload } from '@fortawesome/free-solid-svg-icons'
-export default function PostPopup({ setImgPopup }) {
+export default function PostPopup({ setImgPopup , setImgPopupDetails}) {
     return (
         <div className='modal'>
             <div className="overlay">
@@ -13,7 +13,7 @@ export default function PostPopup({ setImgPopup }) {
 
                     </div>
                     <div className="popup-txtPart">
-                        
+                        <h1></h1>
                     </div>
                 </div>
             </div>
