@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ImgPopupContext } from '../../routes/Links'
 import PostPopup from '../popup/PostPopup/PostPopup'
+
 export default function ProfileBody({userPosts,post}) {
   const { imgPopup, setImgPopup, imgPopupDetails, setImgPopupDetails } = useContext(ImgPopupContext);
   return (
