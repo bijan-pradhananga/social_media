@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState   } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import Popup from '../../popup/Popup';
 import TimelineUploadBtn from './TimelineUploadBtn';
@@ -26,9 +26,11 @@ export default function timeline({ user }) {
   return (
     <div className='timeline_content'>
       <TimelineUploadBtn user={user} setPopup={setPopup} />
-      <TimelineCard setImgPopup={setImgPopup}  timelinePosts={timelinePosts} />
+      {timelinePosts.map((post, index) => (
+        <TimelineCard setImgPopup={setImgPopup} post={post} index={index} key={index}/>
+      ))}
       {popup && <Popup user={user} fetchPosts={fetchPosts} setPopup={setPopup} />}
-      {imgPopup && <PostPopup  setImgPopup={setImgPopup} post={imgPopupDetails} />}
+      {imgPopup && <PostPopup setImgPopup={setImgPopup} post={imgPopupDetails} />}
     </div>
   )
 }
