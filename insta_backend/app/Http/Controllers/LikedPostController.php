@@ -29,8 +29,10 @@ class LikedPostController extends Controller
         $postId = $request->input('post_id');
         if (LikedPost::where('user_id', $userId)->where('post_id', $postId)->exists()) {
             $this->unlike($userId, $postId);
+            return response()->json(['message' => 'Post unliked successfully.'], 200);
         } else {
             $this->like($userId, $postId);
+            return response()->json(['message' => 'Post liked successfully.'], 200);
         }
     }
 }
