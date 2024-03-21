@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { ImgPopupContext } from '../../../../routes/Links'
 import TimelineCardHeader from './TimelineCardHeader'
 import TimelineCardImg from './TimelineCardImg'
-import TimelineActionBtn from '../TimelineActionBtn'
+import TimelineCardActionBtn from './TimelineCardActionBtn'
 import TimelineCardDetails from './TimelineCardDetails'
 
 export default function TimelineCard({ timelinePosts ,setImgPopup }) {
@@ -14,7 +14,7 @@ export default function TimelineCard({ timelinePosts ,setImgPopup }) {
                 <div className='timeline_card' key={index}>
                     <TimelineCardHeader post={post} />
                     <TimelineCardImg setImgPopup={setImgPopup} post={post} setImgPopupDetails={setImgPopupDetails}/>
-                    <TimelineActionBtn />
+                    <TimelineCardActionBtn />
                     <TimelineCardDetails post={post}/>
                 </div>
             ))}
