@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\LikedPostController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -52,3 +53,5 @@ Route::get('/followers', [FollowerController::class, 'checkFollow']);
 Route::post('/followers', [FollowerController::class, 'toggleFollow']);
 Route::get('/followers/follower-count/{id}', [FollowerController::class, 'getFollowerCount']);
 Route::get('/followers/following-count/{id}', [FollowerController::class, 'getFollowingCount']);
+
+Route::post('/likedposts', [LikedPostController::class, 'toggleLikeDislike']);
