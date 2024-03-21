@@ -55,3 +55,5 @@ Route::get('/followers/follower-count/{id}', [FollowerController::class, 'getFol
 Route::get('/followers/following-count/{id}', [FollowerController::class, 'getFollowingCount']);
 
 Route::post('/likedposts', [LikedPostController::class, 'toggleLikeDislike']);
+Route::get('/likedposts/count/{postId}', [LikedPostController::class, 'countLikes']);
+Route::get('/likedposts/{userId}/{postId}', [LikedPostController::class, 'checkLike']);
