@@ -27,7 +27,7 @@ export default function ExploreBody() {
   return (
     <>
       {isLoading ? (
-        <Loading count={6} />
+        <Loading count={9} />
       ) : (
         <div className="explore-body">
           {posts.map((post, index) =>

@@ -20,11 +20,13 @@ export default function PostPopupContent({ post, setImgPopup }) {
                     </Link>
                     <span>{post.caption}</span>
                 </div>
+                <div className='popup-content-body-caption' id='comment-mobile'>
+                    <h3>Comments</h3>
+                </div>
                 <div className='popup-content-body-comments'>
 
                 </div>
-            </div>
-            <div className='popup-content-footer'>
+                <div className='popup-content-footer'>
                 <div className='popup-content-footer1'>
 
                 </div>
@@ -32,6 +34,8 @@ export default function PostPopupContent({ post, setImgPopup }) {
 
                 </div>
             </div>
+            </div>
+
         </div>
     )
 }

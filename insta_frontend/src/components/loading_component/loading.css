@@ -60,6 +60,15 @@
     p {
       height: 70px;
     }
+
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+
+      .loading-image {
+        height: 20vh;
+  
+        }
+  }
+    
   }
   
   @keyframes shine {
@@ -67,4 +76,4 @@
       background-position-x: -200%;
     }
   }
-  
+

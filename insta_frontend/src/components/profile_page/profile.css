@@ -78,8 +78,8 @@
         font-size: smaller;
     }
 
-    
-    .profile-img{
+
+    .profile-img,.loading-profile-img{
         width: 5rem;
         height: 5rem;
         margin-right: 1rem;
