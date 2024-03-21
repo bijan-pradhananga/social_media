@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { ImgPopupContext } from '../../routes/Links'
-import PostPopup from '../popup/PostPopup';
+import PostPopup from '../popup/PostPopup/PostPopup';
 
 export default function ExploreBody() {
   const [posts, setPosts] = useState([]);

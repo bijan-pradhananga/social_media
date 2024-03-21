@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function TimelineCardHeader({post}) {
     return (
@@ -6,10 +7,13 @@ export default function TimelineCardHeader({post}) {
             <div className="timeline_image universal_image">
                 <img src={`http://127.0.0.1:8000/images/${post.user_img}`} alt="" />
             </div>
-            <div className="timeline_text universal_text">
-                <span>{post.name}</span> <br />
-                <span>{post.username}</span>
-            </div>
+            <Link to={`/profile/${post.user_id}`}>
+                <div className="timeline_text universal_text">
+                    <span>{post.name}</span> <br />
+                    <span>{post.username}</span>
+                </div>
+            </Link>
+
         </div>
     )
 }

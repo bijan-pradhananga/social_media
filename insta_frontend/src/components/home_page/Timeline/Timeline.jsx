@@ -3,7 +3,7 @@ import axios from 'axios';
 import Popup from '../../popup/Popup';
 import TimelineUploadBtn from './TimelineUploadBtn';
 import TimelineCard from './TimelineCard/TimelineCard';
-import PostPopup from '../../popup/PostPopup';
+import PostPopup from '../../popup/PostPopup/PostPopup';
 import { ImgPopupContext } from '../../../routes/Links'
 
 export default function timeline({ user }) {

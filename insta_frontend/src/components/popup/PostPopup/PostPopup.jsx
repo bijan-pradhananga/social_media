@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import './PostPopup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faUpload } from '@fortawesome/free-solid-svg-icons'
+import PostPopupImg from './PostPopupImg'
+import PostPopupContent from './PostPopupContent'
 export default function PostPopup({ setImgPopup , post}) {
 
     // useEffect(()=>{
@@ -13,12 +15,8 @@ export default function PostPopup({ setImgPopup , post}) {
                 <FontAwesomeIcon className='cross-btn2' icon={faXmark} style={{ color: "#ffffff", fontSize: "25px" }}
                     onClick={() => { setImgPopup(false) }} />
                 <div className="popup2">
-                    <div className='popup-imgPart'>
-                        <img src={`http://127.0.0.1:8000/posts/${post.image}`} alt={post.image}/>
-                    </div>
-                    <div className="popup-txtPart">
-                        <h1>{post.name}</h1>
-                    </div>
+                    <PostPopupImg post={post}/>
+                    <PostPopupContent setImgPopup={setImgPopup} post={post}/>
                 </div>
             </div>
         </div>
