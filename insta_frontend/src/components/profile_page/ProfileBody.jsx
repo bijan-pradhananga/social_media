@@ -8,7 +8,7 @@ export default function ProfileBody({userPosts,post}) {
     <div className="profile-body">
     {userPosts.length > 0 && (
       userPosts.map((post, index) => (
-        <div className="profile-body-img" key={index} onClick={() => { setImgPopup(true); setImgPopupDetails(post) }}>
+        <div className="profile-body-img" style={{cursor:'pointer'}} key={index} onClick={() => { setImgPopup(true); setImgPopupDetails(post) }}>
           <img src={`http://127.0.0.1:8000/posts/${post.image}`} />
         </div>
       ))

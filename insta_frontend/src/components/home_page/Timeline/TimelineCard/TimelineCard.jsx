@@ -14,7 +14,7 @@ export default function TimelineCard({ timelinePosts ,setImgPopup }) {
                 <div className='timeline_card' key={index}>
                     <TimelineCardHeader post={post} />
                     <TimelineCardImg setImgPopup={setImgPopup} post={post} setImgPopupDetails={setImgPopupDetails}/>
-                    <TimelineCardActionBtn />
+                    <TimelineCardActionBtn setImgPopup={setImgPopup} post={post} setImgPopupDetails={setImgPopupDetails}/>
                     <TimelineCardDetails post={post}/>
                 </div>
             ))}
