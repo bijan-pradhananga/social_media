@@ -8,12 +8,12 @@ export default function LoadingSearch({count}) {
                 <div className="search_info">
                     <div className="search_image img_loading"></div>
                     <div className="search_text">
-                        <div className='search-info-loading' style={{ marginBottom: '0.6rem' }}></div>
-                        <div className='search-info-loading search-info-username'></div>
+                        <div className='search-info-loading info-loading' style={{ marginBottom: '0.6rem' }}></div>
+                        <div className='search-info-loading search-info-username info-loading'></div>
                     </div>
                 </div>
             </div>
-        ))}
+            ))}
         </>
 
     )

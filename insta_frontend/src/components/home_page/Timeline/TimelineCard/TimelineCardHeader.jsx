@@ -13,7 +13,6 @@ export default function TimelineCardHeader({post}) {
                     <span style={{color:'lightgray'}}>{post.username}</span>
                 </div>
             </Link>
-
         </div>
     )
 }
