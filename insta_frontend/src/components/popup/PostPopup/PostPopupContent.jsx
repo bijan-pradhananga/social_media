@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 export default function PostPopupContent({ post, setImgPopup }) {
     return (
         <div className="popup-txtPart">
@@ -31,7 +32,8 @@ export default function PostPopupContent({ post, setImgPopup }) {
 
                 </div>
                 <div className='popup-content-footer2'>
-
+                    <input type="text" placeholder='Add a comment' />
+                    <button><FontAwesomeIcon icon={faPaperPlane} size="lg" style={{color: "#B197FC",}} /></button>
                 </div>
             </div>
             </div>

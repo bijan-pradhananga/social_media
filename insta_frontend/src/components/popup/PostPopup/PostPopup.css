@@ -107,7 +107,31 @@
     width: 100%;
     padding: 0 0.8rem;
     height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
+
+.popup-content-footer2 input{
+    width: 90%;
+    /* height: 5vh; */
+    outline: none;
+    border: none;
+    background-color: inherit;
+}
+
+.popup-content-footer2 button{
+    background-color: #0e83e2;
+    width: 4vh;
+    height: 4vh;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    /* height: 5vh; */
+}
+
+
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
 
@@ -146,12 +170,24 @@
     }
 
     .popup-content-body-comments{
-        height: 80vh;
+        height: 82vh;
     }
 
     .popup-content-footer{
-        height: 10vh;
+        height: 8vh;
+        display: grid;
+        place-items: center;
         border-top: 1px solid gray;
+        /* background-color: red; */
+    }
+
+    .popup-content-footer2 input{
+        height: 5vh;
+    }
+
+    .popup-content-footer2 button{
+        width: 4.5vh;
+        height: 4.5vh;
     }
 
     .popup-content-footer1{
