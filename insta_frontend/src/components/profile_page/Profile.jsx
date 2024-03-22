@@ -36,6 +36,7 @@ export default function Profile({ cUser }) {
   }
 
   useEffect(() => {
+    setIsLoading(true)
     getUser();
     getUserPosts();
   }, [id])
