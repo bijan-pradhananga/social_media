@@ -5,18 +5,19 @@ import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import AuthUser from '../../../authentication/AuthUser';
 import axios from 'axios';
 export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetails, countLikes }) {
-  const {user} = AuthUser();
+  const { user } = AuthUser();
   const [like, setLike] = useState(faHeart);
-  // const changeLike = () => {
-  //   setLike(like === faHeart ? solidHeart : faHeart);
-  // };
 
-  const checkLikeDislike = async () =>{
+  const changeLike = async () => {
+    setLike(like === faHeart ? solidHeart : faHeart);
+  };
+
+  const checkLikeDislike = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:8000/api/likedposts/${user.id}/${post.id}`);
       if (response.data.output) {
         setLike(solidHeart)
-      }else{
+      } else {
         setLike(faHeart)
       }
     } catch (error) {
@@ -24,28 +25,29 @@ export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetail
     }
   }
 
-  const toggleLikeDislike = async (user_id,post_id) =>{
+  const toggleLikeDislike = async (user_id, post_id) => {
     let ids = {
-      user_id,post_id
+      user_id, post_id
     }
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/likedposts',ids)
-      checkLikeDislike();
-      countLikes(post_id);
+      const response = await axios.post('http://127.0.0.1:8000/api/likedposts', ids)
+      if (response.status == 200) {
+        countLikes(post_id);
+      }
     } catch (error) {
       console.log(error);
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     checkLikeDislike();
-  },[])
+  }, [])
 
   return (
     <div className="timeline_actions">
       <div>
         <span  >
-          <FontAwesomeIcon icon={like} onClick={()=>{toggleLikeDislike(user.id,post.id)}} style={{ cursor: 'pointer' }} />
+          <FontAwesomeIcon icon={like} onClick={() => {changeLike(); toggleLikeDislike(user.id, post.id) }} style={{ cursor: 'pointer' }} />
         </span>
         <span>
           <FontAwesomeIcon icon={faComment} onClick={() => { setImgPopup(true); setImgPopupDetails(post) }} style={{ cursor: 'pointer', }} />
