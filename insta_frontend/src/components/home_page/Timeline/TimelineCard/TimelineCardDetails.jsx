@@ -16,7 +16,6 @@ export default function TimelineCardDetails({likeCount, post}) {
                     <b>{post.name.split(' ')[0]}</b> {post.caption}
                 </div>
             )}
-            <div className="timeline_comments">View Comments</div>
         </div>
     )
 }
