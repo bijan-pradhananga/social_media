@@ -57,7 +57,7 @@ export default function Register() {
   }
   return (
     <div>
-      <h2>Register</h2>
+      <h2 style={{color:'white'}}>Register</h2>
       <form id='registerForm' method="post" onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label><br />
         <input type="text" id='name' name='name' value={formData.name} onChange={handleChange} required/><br />

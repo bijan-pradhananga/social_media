@@ -18,7 +18,7 @@ export default function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2 style={{color:'white'}}>Login</h2>
       <form action="" id='loginForm' method="post" onSubmit={submitForm}>
         <input type="text" id='email' placeholder='Enter your email' 
         value={email} onChange={e=>{setEmail(e.target.value)}}
