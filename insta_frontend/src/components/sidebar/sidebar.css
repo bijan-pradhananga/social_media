@@ -4,6 +4,7 @@ nav{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    color: white;
 }
 
 .logo{
@@ -20,11 +21,13 @@ ul li{
     height: 3.5vh;
     line-height: 3.5vh;
     font-size: 18px;
+   
     /* background-color: red; */
 }
 
 ul li span{
     margin-left: 20px;
+    color: white;
 }
 
 footer {
@@ -35,6 +38,7 @@ footer {
 
 footer span{
     margin-left: 20px;
+    color: white;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {

@@ -8,9 +8,9 @@ export default function TimelineCardHeader({post}) {
                 <img src={`http://127.0.0.1:8000/images/${post.user_img}`} alt="" />
             </div>
             <Link to={`/profile/${post.user_id}`}>
-                <div className="timeline_text universal_text">
+                <div className="timeline_text universal_text" style={{color:'white'}}>
                     <span>{post.name}</span> <br />
-                    <span>{post.username}</span>
+                    <span style={{color:'lightgray'}}>{post.username}</span>
                 </div>
             </Link>
 

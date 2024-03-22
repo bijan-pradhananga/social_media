@@ -11,12 +11,14 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 4vh;
+    color: white;
 }
 
 .profile-info button{
     width: 6rem;
     margin-left: 1rem;
     background-color: #0e83e2;
+    color: white;
     outline: none;
     border: none;
     border-radius: 5px;

@@ -6,7 +6,7 @@ export default function PostPopupContent({ post, setImgPopup }) {
     return (
         <div className="popup-txtPart">
             <Link to={`/profile/${post.user_id}`} onClick={() => { setImgPopup(false) }}>
-                <div className='popup-content-header'>
+                <div className='popup-content-header' style={{color:'white'}}>
                     <img src={`http://127.0.0.1:8000/images/${post.user_img}`} alt={post.user_img} />
                     <span>{post.username}</span>
                 </div>
@@ -17,9 +17,9 @@ export default function PostPopupContent({ post, setImgPopup }) {
                 <div className='popup-content-body-caption'>
                     <img src={`http://127.0.0.1:8000/images/${post.user_img}`} alt={post.user_img} />
                     <Link to={`/profile/${post.user_id}`} onClick={() => { setImgPopup(false) }}>
-                        <span style={{ marginRight: '0.5rem' }}>{post.name}</span>
+                        <span style={{ marginRight: '0.5rem',color:'white' }}>{post.name}</span>
                     </Link>
-                    <span>{post.caption}</span>
+                    <span style={{color:'lightgray'}}>{post.caption}</span>
                 </div>
                 <div className='popup-content-body-caption' id='comment-mobile'>
                     <h3>Comments</h3>
@@ -33,7 +33,7 @@ export default function PostPopupContent({ post, setImgPopup }) {
                 </div>
                 <div className='popup-content-footer2'>
                     <input type="text" placeholder='Add a comment' />
-                    <button><FontAwesomeIcon icon={faPaperPlane} size="lg" style={{color: "#B197FC",}} /></button>
+                    <button><FontAwesomeIcon icon={faPaperPlane} size="lg" style={{color:'white'}} /></button>
                 </div>
             </div>
             </div>

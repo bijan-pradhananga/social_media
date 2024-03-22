@@ -17,6 +17,7 @@
     background-color: black;
     position: relative;
     display: flex;
+    color: white;
 }
 
 .popup-imgPart{ 
@@ -45,6 +46,7 @@
 
 .popup-txtPart{
     flex-grow: 1;
+   
 }
 
 .popup-content-header{
@@ -118,6 +120,7 @@
     /* height: 5vh; */
     outline: none;
     border: none;
+    color: white;
     background-color: inherit;
 }
 

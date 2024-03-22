@@ -16,6 +16,7 @@
     height: 5vh;
     border-radius: 10px;
     outline: none;
+    color: white;
     background-color: inherit;
     border: 1px solid gray;
     padding: 12px;
@@ -30,6 +31,7 @@
     align-items: center;
     margin: 1rem 0;
     padding-right: 0.5rem;
+    color: white;
 }
 
 .search_image{

@@ -10,8 +10,8 @@ export default function SearchCard({user,index}) {
                 <img src={`http://127.0.0.1:8000/images/${user.image}`} alt="" />
             </div>
             <div className="search_text">
-                <h3>{user.name}</h3>
-                <span>{user.username}</span>
+                <h3 style={{fontWeight:500}}>{user.name}</h3>
+                <span style={{color:'lightgray'}}>{user.username}</span>
             </div>
         </div>
     </div>

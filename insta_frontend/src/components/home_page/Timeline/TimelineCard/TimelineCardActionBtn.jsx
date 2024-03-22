@@ -7,9 +7,10 @@ import axios from 'axios';
 export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetails, countLikes }) {
   const { user } = AuthUser();
   const [like, setLike] = useState(faHeart);
-
+  const [color,setColor] = useState('white');
   const changeLike = async () => {
     setLike(like === faHeart ? solidHeart : faHeart);
+    setColor(color === 'white' ? 'red' : 'white');
   };
 
   const checkLikeDislike = async () => {
@@ -17,8 +18,10 @@ export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetail
       const response = await axios.get(`http://127.0.0.1:8000/api/likedposts/${user.id}/${post.id}`);
       if (response.data.output) {
         setLike(solidHeart)
+        setColor('red')
       } else {
         setLike(faHeart)
+        setColor('white')
       }
     } catch (error) {
       console.log(error);
@@ -47,7 +50,7 @@ export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetail
     <div className="timeline_actions">
       <div>
         <span  >
-          <FontAwesomeIcon icon={like} onClick={() => {changeLike(); toggleLikeDislike(user.id, post.id) }} style={{ cursor: 'pointer' }} />
+          <FontAwesomeIcon icon={like} onClick={() => {changeLike(); toggleLikeDislike(user.id, post.id) }} style={{ cursor: 'pointer',color:color, transition:'ease 0.5s' }} />
         </span>
         <span>
           <FontAwesomeIcon icon={faComment} onClick={() => { setImgPopup(true); setImgPopupDetails(post) }} style={{ cursor: 'pointer', }} />

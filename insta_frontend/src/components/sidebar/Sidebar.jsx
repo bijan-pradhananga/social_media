@@ -24,31 +24,31 @@ export default function Sidebar() {
           <ul>
           <li>
             <Link to="/">
-              <FontAwesomeIcon icon={faHome} />
+              <FontAwesomeIcon icon={faHome} style={{color:'white'}} />
               <span>Home</span>
             </Link>
           </li>
           <li>
             <Link to="/search">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <FontAwesomeIcon icon={faMagnifyingGlass} style={{color:'white'}} />
               <span>Search</span>
             </Link>
           </li>
           <li>
             <Link to="/explore">
-            <FontAwesomeIcon icon={faCompass} />
+            <FontAwesomeIcon icon={faCompass} style={{color:'white'}}/>
               <span>Explore</span>
             </Link>
           </li>
           <li>
             <Link to="/notifications">
-            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} style={{color:'white'}}/>
               <span>Notifications</span>
             </Link>
           </li>
           <li>
             <Link to={`/profile/${user.id}`}>
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser} style={{color:'white'}}/>
               <span>Profile</span>
             </Link>
           </li>
@@ -58,7 +58,7 @@ export default function Sidebar() {
 
         <footer>
           <Link onClick={logoutUser} to="/login" >
-          <FontAwesomeIcon icon={faSignOutAlt} />
+          <FontAwesomeIcon icon={faSignOutAlt} style={{color:'white'}}/>
           <span>Logout</span>
           </Link>
         </footer>
