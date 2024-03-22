@@ -10,7 +10,7 @@ import LoadingTimelinePost from '../../loading_component/LoadingTimelinePost';
 export default function timeline({ user }) {
   const [timelinePosts, setTimelinePosts] = useState([]);
   const [popup, setPopup] = useState(false);
-  const { imgPopup, setImgPopup, imgPopupDetails } = useContext(ImgPopupContext);
+  const { imgPopup, setImgPopup, imgPopupDetails  } = useContext(ImgPopupContext);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchPosts = async () => {
@@ -30,7 +30,7 @@ export default function timeline({ user }) {
     <div className='timeline_content'>
       <TimelineUploadBtn user={user} setPopup={setPopup} />
       {isLoading ? (
-        <LoadingTimelinePost count={3}/>
+        <LoadingTimelinePost />
       ) : (
         timelinePosts.map((post, index) => (
           <TimelineCard setImgPopup={setImgPopup} post={post} index={index} key={index} />

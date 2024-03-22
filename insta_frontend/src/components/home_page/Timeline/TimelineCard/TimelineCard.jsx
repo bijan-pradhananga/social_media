@@ -26,9 +26,9 @@ export default function TimelineCard({ post , setImgPopup }) {
         <>
                 <div className='timeline_card'>
                     <TimelineCardHeader post={post} />
-                    <TimelineCardImg setImgPopup={setImgPopup} post={post} setImgPopupDetails={setImgPopupDetails}/>
-                    <TimelineCardActionBtn setImgPopup={setImgPopup} post={post} setImgPopupDetails={setImgPopupDetails}
-                        countLikes={countLikes}/>
+                    <TimelineCardImg setImgPopup={setImgPopup} likeCount={likeCount} post={post} setImgPopupDetails={setImgPopupDetails} /> 
+                    <TimelineCardActionBtn setImgPopup={setImgPopup} post={post} setImgPopupDetails={setImgPopupDetails} 
+                      likeCount={likeCount}  countLikes={countLikes}/>
                     <TimelineCardDetails likeCount={likeCount}  post={post}/>
                 </div>
            

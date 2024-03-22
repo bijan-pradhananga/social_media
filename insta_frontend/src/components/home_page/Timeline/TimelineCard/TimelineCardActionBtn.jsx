@@ -13,9 +13,9 @@ export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetail
     setColor(color === 'white' ? 'red' : 'white');
   };
 
-  const checkLikeDislike = async () => {
+  const checkLikeDislike = async (user_id, post_id) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/likedposts/${user.id}/${post.id}`);
+      const response = await axios.get(`http://127.0.0.1:8000/api/likedposts/${user_id}/${post_id}`);
       if (response.data.output) {
         setLike(solidHeart)
         setColor('red')
@@ -43,14 +43,14 @@ export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetail
   }
 
   useEffect(() => {
-    checkLikeDislike();
+    checkLikeDislike(user.id,post.id);
   }, [])
 
   return (
     <div className="timeline_actions">
       <div>
         <span  >
-          <FontAwesomeIcon icon={like} onClick={() => {changeLike(); toggleLikeDislike(user.id, post.id) }} style={{ cursor: 'pointer',color:color, transition:'ease 0.5s' }} />
+          <FontAwesomeIcon icon={like} onClick={() => {changeLike(); toggleLikeDislike(user.id, post.id) }} style={{ cursor: 'pointer',color:color, transition:'ease-out 0.5s' }} />
         </span>
         <span>
           <FontAwesomeIcon icon={faComment} onClick={() => { setImgPopup(true); setImgPopupDetails(post) }} style={{ cursor: 'pointer', }} />
