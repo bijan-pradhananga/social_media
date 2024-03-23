@@ -166,6 +166,16 @@
         display: none;
     }
 
+    .popup-comment{
+        display: flex;
+        border: none;
+    }
+
+    .popup-comment img{
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
     #comment-mobile{
         display: flex;
     }
@@ -187,6 +197,8 @@
     }
 
     .popup-content-footer2 input{
+        width: 84vw;
+
         height: 5vh;
     }
 
