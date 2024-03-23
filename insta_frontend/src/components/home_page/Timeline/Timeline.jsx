@@ -33,7 +33,7 @@ export default function timeline({ user }) {
         <LoadingTimelinePost />
       ) : (
         timelinePosts.map((post, index) => (
-          <TimelineCard setImgPopup={setImgPopup} post={post} index={index} key={index} />
+          <TimelineCard setImgPopup={setImgPopup} post={post} index={index} key={index} setIsLoading={setIsLoading} />
         ))
       )}
       {popup && <Popup user={user} fetchPosts={fetchPosts} setPopup={setPopup} />}

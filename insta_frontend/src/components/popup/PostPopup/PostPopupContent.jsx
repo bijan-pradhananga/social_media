@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PostPopupActionBtn from './PostPopupActionBtn'
 import PostPopupComments from './PostPopupComments'
 import PostPopupContentHeader from './PostPopupContentHeader'
+import AuthUser from '../../authentication/AuthUser'
 
 export default function PostPopupContent({ post, setImgPopup }) {
-
+    const { user } = AuthUser();
+    const [isLoading, setIsLoading] = useState(true);
     return (
         <div className="popup-txtPart">
             <Link to={`/profile/${post.user_id}`} onClick={() => { setImgPopup(false) }}>
@@ -18,7 +20,7 @@ export default function PostPopupContent({ post, setImgPopup }) {
             <div className='popup-content-body'>
                 <PostPopupContentHeader post={post} setImgPopup={setImgPopup}/>
                 <PostPopupComments/>
-                <PostPopupActionBtn/>
+                <PostPopupActionBtn user={user}  post={post} isLoading={isLoading} setIsLoading={setIsLoading}/>
             </div>
 
         </div>
