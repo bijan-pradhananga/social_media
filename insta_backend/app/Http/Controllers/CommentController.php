@@ -36,7 +36,10 @@ class CommentController extends Controller
     //to get comments of a specific post
     public function getCommentsByPostId($postId)
     {
-        $comments = Comment::where('post_id', $postId)->get();
+        $comments = Comment::select('comments.*', 'users.name', 'users.image')
+            ->join('users', 'comments.user_id', '=', 'users.id')
+            ->where('comments.post_id', $postId)
+            ->get();
         return response()->json(['comments' => $comments], 200);
     }
 
