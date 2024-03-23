@@ -3,23 +3,19 @@ import axios from 'axios';
 
 const ProfileButton = ({ cUser, id , fetchFollowDetails }) => {
   const [follows, setFollows] = useState(false);
-
-  useEffect(() => {
-    const checkFollow = async () => {
-      try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/followers/?follower_id=${cUser.id}&followed_id=${id}`);
-        if (response.data.follows==1) {
-            setFollows(true)
-        }else{
-            setFollows(false)
-        }
-      } catch (error) {
-        console.error('Something went Wrong');
+  
+  const checkFollow = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/followers/?follower_id=${cUser.id}&followed_id=${id}`);
+      if (response.data.follows==1) {
+          setFollows(true)
+      }else{
+          setFollows(false)
       }
-    };
-
-    checkFollow();
-  }, [id]);
+    } catch (error) {
+      console.error('Something went Wrong');
+    }
+  };
 
   const toggleFollow = async () =>{
     try {
@@ -36,6 +32,12 @@ const ProfileButton = ({ cUser, id , fetchFollowDetails }) => {
         console.error('Something went Wrong');
       }
   }
+
+  useEffect(() => {
+    if (cUser.id != id) {
+      checkFollow();
+    }
+  }, [id]);
 
   return (
     <>
