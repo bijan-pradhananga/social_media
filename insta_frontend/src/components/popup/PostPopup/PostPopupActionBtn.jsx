@@ -5,7 +5,8 @@ import { faPaperPlane, faHeart, faComment } from '@fortawesome/free-regular-svg-
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'
 import LoadingPopupBtns from '../../loading_component/LoadingPopupBtns';
-export default function PostPopupActionBtn({ user, post, isLoading, setIsLoading }) {
+import PostPopupCommentBtn from './PostPopupCommentBtn';
+export default function PostPopupActionBtn({ user, post, isLoading, setIsLoading, postComment }) {
     const isMobile = () => {
         const width = window.innerWidth;
         return width <= 768; // Adjust this threshold as needed
@@ -55,10 +56,8 @@ export default function PostPopupActionBtn({ user, post, isLoading, setIsLoading
                     </div>
                 )}
             </div>
-            <div className='popup-content-footer2'>
-                <input type="text" placeholder='Add a comment' />
-                <button><FontAwesomeIcon icon={faPaperPlane} size="lg" style={{ color: 'white' }} /></button>
-            </div>
+            <PostPopupCommentBtn user={user} post={post} postComment={postComment}/>
+
         </div>
 
     )
