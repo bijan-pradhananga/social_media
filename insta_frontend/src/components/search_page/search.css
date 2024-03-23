@@ -11,7 +11,7 @@
     margin-bottom: 1rem;
 }
 
-.search_contents input{
+.search-header input{
     width: 90%;
     height: 5vh;
     border-radius: 10px;
@@ -66,7 +66,7 @@
         padding-left: 3px;
     }
 
-    .search_contents input{
+    .search-header input{
         width: 95%;
     }
 
