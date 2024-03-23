@@ -5,8 +5,7 @@ import Profile from "../components/profile_page/Profile"
 import Explore from "../components/explore_page/Explore"
 import Notification from "../components/notification_page/Notification"
 import AuthUser from "../components/authentication/AuthUser"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faComment } from '@fortawesome/free-regular-svg-icons'
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { useState, createContext } from "react"
 import axios from 'axios'
