@@ -8,17 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class FollowerController extends Controller
 {
-    public function getFollowerCount($id)
-    {
-        $followerCount = Follower::where('followed_id', $id)->count();
-        return response()->json(['follower_count' => $followerCount], 200);
-    }
-
-    public function getFollowingCount($id)
-    {
-        $followingCount = Follower::where('follower_id', $id)->count();
-        return response()->json(['following_count' => $followingCount], 200);
-    }
 
     public function getFollowDetails($id)
     {
