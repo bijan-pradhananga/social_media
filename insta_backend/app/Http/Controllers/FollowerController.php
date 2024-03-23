@@ -20,6 +20,13 @@ class FollowerController extends Controller
         return response()->json(['following_count' => $followingCount], 200);
     }
 
+    public function getFollowDetails($id)
+    {
+        $followerCount = Follower::where('followed_id', $id)->count();
+        $followingCount = Follower::where('follower_id', $id)->count();
+        return response()->json(['follower_count' => $followerCount,'following_count' => $followingCount], 200);
+    }
+
 
     public function checkFollow(Request $request)
     {

@@ -51,6 +51,7 @@ Route::group([
 
 Route::get('/followers', [FollowerController::class, 'checkFollow']);
 Route::post('/followers', [FollowerController::class, 'toggleFollow']);
+Route::get('/followers/followCount/{id}', [FollowerController::class, 'getFollowDetails']);
 Route::get('/followers/follower-count/{id}', [FollowerController::class, 'getFollowerCount']);
 Route::get('/followers/following-count/{id}', [FollowerController::class, 'getFollowingCount']);
 
