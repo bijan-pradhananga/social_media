@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ProfileButton = ({ cUser, id , fetchFollowerCount }) => {
+const ProfileButton = ({ cUser, id , fetchFollowDetails }) => {
   const [follows, setFollows] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const ProfileButton = ({ cUser, id , fetchFollowerCount }) => {
             }else{
                 setFollows(false)
             }
-            fetchFollowerCount();
+            fetchFollowDetails();
         }
       } catch (error) {
         console.error('Something went Wrong');

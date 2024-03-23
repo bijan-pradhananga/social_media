@@ -6,28 +6,19 @@ import LoadingProfileHeader from '../loading_component/LoadingProfileHeader';
 export default function ProfileHeader({ user, cUser, id, userPosts, isLoading }) {
   const [followerCount, setFollowerCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
-  const fetchFollowerCount = async () => {
+
+  const fetchFollowDetails = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/followers/follower-count/${id}`);
+      const response = await axios.get(`http://127.0.0.1:8000/api/followers/followCount/${id}`);
       setFollowerCount(response.data.follower_count);
+      setFollowingCount(response.data.following_count);
     } catch (error) {
       console.error('Error fetching follower count:', error);
     }
   };
 
-  const fetchFollowingCount = async () => {
-    try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/followers/following-count/${id}`);
-      setFollowingCount(response.data.following_count);
-    } catch (error) {
-      console.error('Error fetching following count:', error);
-    }
-  };
-
-
   useEffect(() => {
-    fetchFollowerCount();
-    fetchFollowingCount();
+    fetchFollowDetails();
   }, [id]);
   return (
     <>
@@ -41,7 +32,7 @@ export default function ProfileHeader({ user, cUser, id, userPosts, isLoading })
           <div className='profile-info'>
             <div style={{ display: 'flex', marginBottom: '0.6rem' }}>
               <h3>{user.username}</h3>
-              <ProfileButton fetchFollowerCount={fetchFollowerCount} cUser={cUser} id={id} />
+              <ProfileButton fetchFollowDetails={fetchFollowDetails} cUser={cUser} id={id} />
             </div>
             <span>{userPosts.length} posts</span> &nbsp;&nbsp;
             <span>{followerCount} followers</span> &nbsp;&nbsp;
