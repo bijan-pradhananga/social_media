@@ -17,29 +17,32 @@ const notify = async (user_id, notifier_id, type, post_id) => {
       console.error(error);
   }
 }
-
-const getUserNotifications = async (user_id, setNotifications) => {
-  try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/notifications/${user_id}`);
-      if (response.status === 200 && response.data.notifications.length !== 0) {
-          setNotifications(response.data.notifications);
-      }
-  } catch (error) {
-      console.error(error);
-  }
-}
 export { notify };
 
 export default function Notification() {
   const { user } = AuthUser();
   const [notifications,setNotifications] = useState([]);
+  const [isLoading,setIsLoading] = useState(true);
+const getUserNotifications = async (user_id, setNotifications) => {
+  try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/notifications/${user_id}`);
+      if (response.status === 200) {
+          setNotifications(response.data.notifications);
+          setIsLoading(false)
+      }
+  } catch (error) {
+      console.error(error);
+  }
+}
   useEffect(()=>{
     getUserNotifications(user.id,setNotifications)
   },[])
+
+
   return (
     <div className='notification_contents'>
       <NotificationHeader/>
-      <NotificationBody user={user} getUserNotifications={getUserNotifications} notifications={notifications} setNotifications={setNotifications}/>
+      <NotificationBody isLoading={isLoading} user={user} getUserNotifications={getUserNotifications} notifications={notifications} setNotifications={setNotifications}/>
     </div>
   )
 
