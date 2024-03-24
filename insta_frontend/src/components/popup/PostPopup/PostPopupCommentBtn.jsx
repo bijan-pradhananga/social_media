@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons'
+import { notify } from '../../notification_page/Notification';
+
 export default function PostPopupCommentBtn({user, post, postComment}) {
     const [content,setContent] = useState('');
     const handleCmntChange = (e) => {
@@ -10,6 +12,7 @@ export default function PostPopupCommentBtn({user, post, postComment}) {
     const handleSubmit = (e) =>{
         e.preventDefault();
         postComment(user.id,post.id,content);
+        notify(post.user_id,user.id,'comment',post.id);
         setContent('')
     }
 

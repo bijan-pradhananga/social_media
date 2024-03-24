@@ -3,9 +3,10 @@ import { ImgPopupContext } from '../../../routes/Links'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faHeart, faComment } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios'
 import LoadingPopupBtns from '../../loading_component/LoadingPopupBtns';
 import PostPopupCommentBtn from './PostPopupCommentBtn';
+import { notify } from '../../notification_page/Notification';
+
 export default function PostPopupActionBtn({ user, post, isLoading, setIsLoading, postComment }) {
     const isMobile = () => {
         const width = window.innerWidth;
@@ -42,8 +43,14 @@ export default function PostPopupActionBtn({ user, post, isLoading, setIsLoading
                 ) : (
                     <div>
                         <span>
-                            <FontAwesomeIcon icon={like} onClick={() => { changeLike(); toggleLikeDislike(user.id, post.id, countLikes, setLikeCount) }}
-                                style={{ cursor: 'pointer', color: color, transition: 'ease-out 0.5s' }} size="xl" />
+                            <FontAwesomeIcon icon={like} 
+                            onClick={() => {
+                                 changeLike(); 
+                                 toggleLikeDislike(user.id, post.id, countLikes, setLikeCount)
+                                 notify(post.user_id,user.id,'like',post.id);
+                             }}
+                            style={{ cursor: 'pointer', color: color, transition: 'ease-out 0.5s' }} size="xl"
+                            />
                         </span>
                         <span><FontAwesomeIcon icon={faComment} size="xl" style={{ color: 'white', marginLeft: '0.5rem' }} /></span>
                         <div style={{ marginTop: '5px' }} >

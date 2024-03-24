@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faComment } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import AuthUser from '../../../authentication/AuthUser';
-import axios from 'axios';
+import { notify } from '../../../notification_page/Notification';
+
 export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetails, countLikes,setLikeCount }) {
   const { user } = AuthUser();
   const {checkLikeDislike,toggleLikeDislike } = useContext(ImgPopupContext);
@@ -23,11 +24,16 @@ export default function TimelineActionBtn({ post, setImgPopup, setImgPopupDetail
     <div className="timeline_actions">
       <div>
         <span  >
-          <FontAwesomeIcon icon={like} onClick={() => {changeLike(); toggleLikeDislike(user.id, post.id, countLikes, setLikeCount) }}
+          <FontAwesomeIcon icon={like} onClick={() =>
+           {  changeLike(); 
+              toggleLikeDislike(user.id, post.id, countLikes, setLikeCount);
+              notify(post.user_id,user.id,'like',post.id);
+           }}
           style={{ cursor: 'pointer',color:color, transition:'ease-out 0.5s' }} />
         </span>
         <span>
-          <FontAwesomeIcon icon={faComment} onClick={() => { setImgPopup(true); setImgPopupDetails(post) }} style={{ cursor: 'pointer', }} />
+          <FontAwesomeIcon icon={faComment} onClick={() => { setImgPopup(true); setImgPopupDetails(post) }} 
+          style={{ cursor: 'pointer', }} />
         </span>
       </div>
     </div>
