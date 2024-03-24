@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\LikedPostController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -66,4 +67,8 @@ Route::get('/likedposts/{userId}/{postId}', [LikedPostController::class, 'checkL
 //for comments
 Route::post('/comments', [CommentController::class, 'store']);
 Route::get('/comments/{postId}', [CommentController::class, 'getCommentsByPostId']);
+
+//for notification
+Route::post('/notifications', [NotificationController::class, 'toggleNotification']);
+Route::get('/notifications/{id}', [NotificationController::class, 'getNotificationsByUserId']);
 
