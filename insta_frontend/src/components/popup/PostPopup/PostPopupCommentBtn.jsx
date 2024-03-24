@@ -18,7 +18,9 @@ export default function PostPopupCommentBtn({user, post, postComment}) {
             <form action="" method="post" onSubmit={handleSubmit}>
                 <div className='popup-content-footer2'>
                     <input type="text" placeholder='Add a comment' value={content} onChange={handleCmntChange} required/>
-                    <button><FontAwesomeIcon icon={faPaperPlane} size="lg" style={{ color: 'white' }} /></button>
+                    <button style={{cursor:'pointer'}}>
+                        <FontAwesomeIcon icon={faPaperPlane} size="lg" style={{ color: 'white' }} />
+                    </button>
                 </div>
             </form>
         </>
