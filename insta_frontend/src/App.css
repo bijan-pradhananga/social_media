@@ -47,6 +47,10 @@ body{
     color: black;
 }
 
+button{
+    cursor: pointer;
+}
+
 .contents::-webkit-scrollbar {
     display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }

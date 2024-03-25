@@ -10,9 +10,21 @@ import LoadingTimelinePost from '../../loading_component/LoadingTimelinePost';
 export default function timeline({ user }) {
   const [timelinePosts, setTimelinePosts] = useState([]);
   const [popup, setPopup] = useState(false);
-  const { imgPopup, setImgPopup, imgPopupDetails  } = useContext(ImgPopupContext);
+  const { imgPopup, setImgPopup, imgPopupDetails } = useContext(ImgPopupContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [visiblePosts, setVisiblePosts] = useState(3);
 
+  const loadMorePosts = () => {
+    // Set isLoading to true to show loading indicator
+    setIsLoading(true);
+
+    // Simulate fetching more posts from API
+    setTimeout(() => {
+      // Increase the number of visible posts by 3
+      setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 3);
+      setIsLoading(false);
+    }, 1000); // Simulated loading delay
+  };
   const fetchPosts = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:8000/api/posts/follows/${user.id}`);
@@ -29,13 +41,23 @@ export default function timeline({ user }) {
   return (
     <div className='timeline_content'>
       <TimelineUploadBtn user={user} setPopup={setPopup} />
-      {isLoading ? (
-        <LoadingTimelinePost />
-      ) : (
-        timelinePosts.map((post, index) => (
-          <TimelineCard setImgPopup={setImgPopup} post={post} index={index} key={index} setIsLoading={setIsLoading} />
-        ))
+      {timelinePosts.slice(0, visiblePosts).map((post, index) => (
+        <TimelineCard setImgPopup={setImgPopup}
+          key={index}
+          post={post}
+        />
+      ))}
+      {isLoading && <LoadingTimelinePost />}
+      {visiblePosts < timelinePosts.length && !isLoading && (
+        <div style={{width:'100%',height:'5vh',display:'flex',justifyContent:'center',alignItems:'center'}}>
+          <button onClick={loadMorePosts} style={{ backgroundColor: 'inherit', color: 'white', fontWeight:'500',outline:'none',border:'none',alignSelf:'flex-start' }}>
+            See More Posts
+          </button>
+        </div>
+
       )}
+
+
       {popup && <Popup user={user} fetchPosts={fetchPosts} setPopup={setPopup} />}
       {imgPopup && <PostPopup setImgPopup={setImgPopup} post={imgPopupDetails} />}
     </div>
