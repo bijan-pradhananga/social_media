@@ -14,6 +14,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name'  => 'required|max:100',
             'username'   => 'required|max:100',
+            'address'   => 'required|max:100',
             'email' => 'required|email|max:100',
             'password' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
@@ -29,6 +30,7 @@ class UserController extends Controller
             $user = User::create([
                 'name'  => $request->name,
                 'username'   => $request->username,
+                'address'   => $request->address,
                 'email' => $request->email,
                 'password'        => Hash::make($request->password),
                 'image'         => $imgName
@@ -73,6 +75,18 @@ class UserController extends Controller
         // Return the posts as JSON response
         return response()->json(['status' => 200, 'posts' => $posts], 200);
     }
+
+    public function getUsersByAddress($address, $id) {
+        $users = User::where('address', $address)
+                     ->where('id', '!=', $id) // Exclude the user with the specified ID
+                     ->get();
+    
+        if ($users->isNotEmpty()) {
+            return response()->json(['users' => $users], 200);
+        } else {
+            return response()->json(['message' => 'No users found with the given address'], 404);
+        }
+    }    
 
 
     public function searchUser($searchValue)
