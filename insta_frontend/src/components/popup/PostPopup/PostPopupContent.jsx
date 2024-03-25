@@ -13,6 +13,7 @@ export default function PostPopupContent({ post, setImgPopup }) {
 
     const getComments = async (post_id) =>{
         try {
+            setIsLoading(true)
             const response = await axios.get(`http://127.0.0.1:8000/api/comments/${post.id}`);
             setComments(response.data.comments);
             setIsLoading(false)
@@ -25,7 +26,6 @@ export default function PostPopupContent({ post, setImgPopup }) {
         try {
             const response = await axios.post(`http://127.0.0.1:8000/api/comments`,{user_id,post_id,content});
             if (response.status==200) {
-                alert('Comment Posted')
                 getComments(post_id);
             }
         } catch (error) {
