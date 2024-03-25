@@ -50,6 +50,58 @@ class UserController extends Controller
         }
     }
 
+    public function update(Request $request, int $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'      => 'required|max:100',
+            'username'  => 'required|max:100',
+            'address'   => 'required|max:100',
+            'email'     => 'required|email|max:100',
+            'password'  => 'required|string',
+            'image'     => 'image|mimes:jpeg,png,jpg,gif|max:5120', // Make image field optional
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'status'  => 422,
+                'message' => $validator->messages(),
+            ], 422);
+        }
+    
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json([
+                'status'  => 404,
+                'message' => 'User not found',
+            ], 404);
+        }
+    
+        // Handle image upload if provided
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imgName = $image->getClientOriginalName();
+            $image->move('images/', $imgName);
+        } else {
+            $imgName = $user->image; // Keep the existing image if not provided
+        }
+    
+        // Update user data
+        $user->update([
+            'name'      => $request->name,
+            'username'  => $request->username,
+            'address'   => $request->address,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+            'image'     => $imgName,
+        ]);
+    
+        return response()->json([
+            'status'  => 200,
+            'message' => 'User updated successfully',
+        ], 200);
+    }
+    
+
     public function getUserById($id)
     {
         // Retrieve the user by ID
