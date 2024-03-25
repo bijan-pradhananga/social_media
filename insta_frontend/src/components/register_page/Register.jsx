@@ -5,6 +5,7 @@ export default function Register() {
     const [formData, setFormData] = useState({
       name: '',
       username: '',
+      address:'',
       email: '',
       password: '',
       image: ''
@@ -51,6 +52,7 @@ export default function Register() {
         name: '',
         username: '',
         email: '',
+        address:'',
         password: '',
         image: ''
       });
@@ -58,17 +60,19 @@ export default function Register() {
   return (
     <div>
       <h2 style={{color:'white'}}>Register</h2>
-      <form id='registerForm' method="post" onSubmit={handleSubmit}>
+      <form id='registerForm' method="post" onSubmit={handleSubmit} style={{color:'white'}}>
         <label htmlFor="name">Name</label><br />
-        <input type="text" id='name' name='name' value={formData.name} onChange={handleChange} required/><br />
+        <input type="text" id='name' value={formData.name} onChange={handleChange} required/><br />
         <label htmlFor="username">Username</label><br />
-        <input type="text" id='username' name='username' value={formData.username} onChange={handleChange} required/><br />
+        <input type="text" id='username' value={formData.username} onChange={handleChange} required/><br />
+        <label htmlFor="address">Address</label><br />
+        <input type="text" id='address' value={formData.address} onChange={handleChange} required/><br />
         <label htmlFor="email">Email</label><br />
-        <input type="email" id='email' name='email' value={formData.email} onChange={handleChange} required/><br />
+        <input type="email" id='email' value={formData.email} onChange={handleChange} required/><br />
         <label htmlFor="password">Password</label><br />
-        <input type="password" id='password' name='password' value={formData.password} onChange={handleChange} required/><br />
+        <input type="password" id='password' value={formData.password} onChange={handleChange} required/><br />
         <label htmlFor="image">Image</label><br />
-        <input type="file" id='image' name='image' onChange={handleImageChange} required/><br />
+        <input type="file" id='image' onChange={handleImageChange} required/><br />
         <button style={{color:'black'}}>Register</button>
       </form>
     </div>
