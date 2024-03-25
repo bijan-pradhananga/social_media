@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import AuthUser from '../../authentication/AuthUser';
-export default function TimelineUploadBtn({ user, setPopup }) {
-  const {token,logout} = AuthUser();
+export default function TimelineUploadBtn({ setPopup }) {
+  const {user,token,logout} = AuthUser();
   const logoutUser = () =>{
     if (token!=undefined) {
       logout();

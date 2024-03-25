@@ -73,6 +73,10 @@
     object-fit: cover;
 }
 
+.edit_profile h2{
+    margin-top: 5px;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 767px) {
 
     .profile_contents{

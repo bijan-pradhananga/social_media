@@ -3,8 +3,10 @@ import axios from 'axios'
 import './popup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faUpload } from '@fortawesome/free-solid-svg-icons'
+import AuthUser from '../authentication/AuthUser'
 
-export default function Popup({ user, setPopup ,fetchPosts}) {
+export default function Popup({ setPopup ,fetchPosts}) {
+    const {user} = AuthUser()
     const [formData, setFormData] = useState({
         user_id: user.id,
         caption: '',

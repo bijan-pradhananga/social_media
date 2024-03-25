@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ProfileButton = ({ cUser, id , fetchFollowDetails }) => {
   const [follows, setFollows] = useState(false);
@@ -42,7 +43,9 @@ const ProfileButton = ({ cUser, id , fetchFollowDetails }) => {
   return (
     <>
       {cUser.id == id ? (
-        <button>Edit Profile</button>
+        <Link to={`/profile/edit/${cUser.id}`}>
+          <button>Edit Profile</button>
+        </Link>
       ) : (
         <button onClick={toggleFollow}>{follows ? 'Unfollow' : 'Follow'}</button>
       )}

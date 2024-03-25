@@ -9,6 +9,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { useState, createContext } from "react"
 import axios from 'axios'
+import EditProfile from "../components/profile_page/EditProfile"
 
 export const ImgPopupContext = createContext();
 
@@ -60,6 +61,7 @@ export default function Links() {
         <Route path="" element={<Home user={user} />} />
         <Route path="/search" index element={<Search />} />
         <Route path="/profile/:id" element={<Profile cUser={user} />} />
+        <Route path="/profile/edit/:id" element={<EditProfile user={user} />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/notifications" element={<Notification />} />
       </Routes>

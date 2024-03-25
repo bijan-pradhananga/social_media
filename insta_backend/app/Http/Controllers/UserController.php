@@ -52,22 +52,6 @@ class UserController extends Controller
 
     public function update(Request $request, int $id)
     {
-        $validator = Validator::make($request->all(), [
-            'name'      => 'required|max:100',
-            'username'  => 'required|max:100',
-            'address'   => 'required|max:100',
-            'email'     => 'required|email|max:100',
-            'password'  => 'required|string',
-            'image'     => 'image|mimes:jpeg,png,jpg,gif|max:5120', // Make image field optional
-        ]);
-    
-        if ($validator->fails()) {
-            return response()->json([
-                'status'  => 422,
-                'message' => $validator->messages(),
-            ], 422);
-        }
-    
         $user = User::find($id);
         if (!$user) {
             return response()->json([
@@ -75,7 +59,16 @@ class UserController extends Controller
                 'message' => 'User not found',
             ], 404);
         }
-    
+        // Check if the provided password matches the current password
+        $currentPassword = $user->password;
+        $providedPassword = $request->password;
+        if ($currentPassword==$providedPassword) {
+            // Passwords match, keep the current password
+            $hashedPassword = $currentPassword;
+        } else {
+            // Passwords don't match, hash the new password
+            $hashedPassword = Hash::make($providedPassword);
+        }
         // Handle image upload if provided
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -91,10 +84,10 @@ class UserController extends Controller
             'username'  => $request->username,
             'address'   => $request->address,
             'email'     => $request->email,
-            'password'  => Hash::make($request->password),
+            'password'  => $hashedPassword,
             'image'     => $imgName,
         ]);
-    
+
         return response()->json([
             'status'  => 200,
             'message' => 'User updated successfully',
