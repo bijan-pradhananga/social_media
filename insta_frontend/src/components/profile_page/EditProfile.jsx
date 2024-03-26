@@ -3,15 +3,15 @@ import axios from 'axios';
 import AuthUser from '../authentication/AuthUser';
 export default function EditProfile() {
     const { user } = AuthUser()
-    const [imgUrl,setImgUrl] = useState(`http://127.0.0.1:8000/images/${user.image}`)
+    const [imgUrl, setImgUrl] = useState(`http://127.0.0.1:8000/images/${user.image}`)
     const [formData, setFormData] = useState({
         name: user.name,
         username: user.username,
         address: user.address,
         email: user.email,
-        password: user.password,
-        image: ''
-    });
+        password: '', 
+        image: null, 
+      });
 
     //to change the value of the form inputs
     const handleChange = (e) => {
@@ -49,22 +49,25 @@ export default function EditProfile() {
     }
 
     //to update
-    const updateDetails = async () => {
+    const updateDetails = async (formData) => {
+        const form = new FormData();
+        for (let key in formData) {
+          form.append(key, formData[key]);
+        }
         try {
-            let fn = new FormData();
-            const response = await axios.put(`http://127.0.0.1:8000/api/users/${user.id}`, fn);
-            if (response.status === 200) {
-                updateToken();
-                alert('Profile updated successfully:');
-            }
+          const response = await axios.put(`http://127.0.0.1:8000/api/users/${user.id}`, form);
+          if (response.status === 200) {
+            console.log('Profile updated successfully:', response.data.message);
+            updateToken();
+          }
         } catch (error) {
-            console.error('Error updating profile:', error);
+          console.error('Error updating profile:', error);
         }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateDetails();
+        updateDetails(formData);
     }
 
     return (
@@ -91,7 +94,7 @@ export default function EditProfile() {
                 <label htmlFor="email">Email</label><br />
                 <input type="email" id='email' value={formData.email} onChange={handleChange} required /><br />
                 <label htmlFor="password">Password</label><br />
-                <input type="password" id='password' value={formData.password} onChange={handleChange} required /><br />
+                <input type="password" id='password' value={formData.password} onChange={handleChange} /><br />
                 <input type="file" id='image' style={{ display: 'none' }} onChange={handleImageChange} /><br />
                 <button style={{ marginTop: '-1rem' }}>Update</button>
             </form>
