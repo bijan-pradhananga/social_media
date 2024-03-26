@@ -73,8 +73,64 @@
     object-fit: cover;
 }
 
+.edit_profile {
+    padding: 5px;
+}
+
 .edit_profile h2{
-    margin-top: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.edit_profile form input{
+    width: 100%;
+    height: 6vh;
+    background-color: black;
+    border: none;
+    outline: none;
+    border: 1px solid gray;
+    margin: 0.5rem 0 1rem  0;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: ease 0.5s;
+}
+
+.edit_profile form input:focus{
+    border: 1px solid white;
+}
+
+.edit_profile form button,.imgBtn{
+    width: 6rem;
+    height: 5vh;
+    background-color: #0e83e2;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.imageHolder{
+    height: 10vh;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #242526;
+    border-radius: 5px;
+}
+
+.imageHolder .imgBtn{
+    font-size: 14px;
+}
+
+.imageHolder img{
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    outline: none;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
@@ -98,6 +154,13 @@
     .profile-body-img{
         height: 20vh;
 
+    }
+
+    .imageHolder img{
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 50%;
+        outline: none;
     }
 
 }
