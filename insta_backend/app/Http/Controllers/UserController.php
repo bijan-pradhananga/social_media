@@ -67,7 +67,6 @@ class UserController extends Controller
             'address'  => 'required|max:100',
             'email'    => 'required|email|max:100',
             'password' => 'string|nullable', // Password is optional
-            'image'    => 'image|mimes:jpeg,png,jpg,gif|max:5120', // Image is optional
         ]);
     
         if ($validator->fails()) {
@@ -78,7 +77,7 @@ class UserController extends Controller
         }
     
         // Hash the new password if provided
-        if ($request->has('password')) {
+        if ($request->password != '') {
             $hashedPassword = Hash::make($request->password);
         } else {
             $hashedPassword = $user->password; // Keep the existing password
@@ -86,6 +85,12 @@ class UserController extends Controller
     
         // Handle image upload if provided
         if ($request->hasFile('image')) {
+            if ($user->image) { 
+                $imagePath = public_path('images/') . $user->image;
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
             $image = $request->file('image');
             $imgName = $image->getClientOriginalName();
             $image->move('images/', $imgName);
