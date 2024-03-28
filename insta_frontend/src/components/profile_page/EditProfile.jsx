@@ -50,15 +50,15 @@ export default function EditProfile() {
 
     //to update
     const updateDetails = async (formData) => {
-        const form = new FormData();
+        const fn = new FormData();
         for (let key in formData) {
-          form.append(key, formData[key]);
-        }
+            fn.append(key, formData[key]);
+          }
         try {
-          const response = await axios.put(`http://127.0.0.1:8000/api/users/${user.id}`, form);
+          const response = await axios.post(`http://127.0.0.1:8000/api/users/${user.id}`,fn);
           if (response.status === 200) {
-            console.log('Profile updated successfully:', response.data.message);
             updateToken();
+            alert('Profile updated successfully')
           }
         } catch (error) {
           console.error('Error updating profile:', error);

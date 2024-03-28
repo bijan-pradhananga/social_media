@@ -112,6 +112,10 @@
     place-items: center;
 }
 
+.edit_profile form{
+    padding: 0 5px;
+}
+
 .imageHolder{
     height: 10vh;
     padding: 5px 10px;
