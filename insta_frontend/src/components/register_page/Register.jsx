@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import './register.css'
+import { Link } from 'react-router-dom';
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -58,23 +60,33 @@ export default function Register() {
       });
   }
   return (
-    <div>
-      <h2 style={{color:'white'}}>Register</h2>
-      <form id='registerForm' method="post" onSubmit={handleSubmit} style={{color:'white'}}>
-        <label htmlFor="name">Name</label><br />
-        <input type="text" id='name' value={formData.name} onChange={handleChange} required/><br />
-        <label htmlFor="username">Username</label><br />
-        <input type="text" id='username' value={formData.username} onChange={handleChange} required/><br />
-        <label htmlFor="address">Address</label><br />
-        <input type="text" id='address' value={formData.address} onChange={handleChange} required/><br />
-        <label htmlFor="email">Email</label><br />
-        <input type="email" id='email' value={formData.email} onChange={handleChange} required/><br />
-        <label htmlFor="password">Password</label><br />
-        <input type="password" id='password' value={formData.password} onChange={handleChange} required/><br />
-        <label htmlFor="image">Image</label><br />
+    <div className='registerContainer'>
+      <div className='registerForm'>
+      <h2>Insta Clone</h2>
+      <form id='registerForm' method="post" onSubmit={handleSubmit}>
+        <input type="text" id='name' value={formData.name} onChange={handleChange}
+        placeholder='Enter your full name'
+        required/><br />
+        <input type="text" id='username' value={formData.username} onChange={handleChange} 
+         placeholder='Enter your username'
+        required/><br />
+        <input type="text" id='address' value={formData.address} onChange={handleChange}
+        placeholder='Enter your address'
+        required/><br />
+        <input type="email" id='email' value={formData.email} onChange={handleChange} 
+        placeholder='Enter your email'
+        required/><br />
+        <input type="password" id='password' value={formData.password} onChange={handleChange} 
+        placeholder='Enter your password'
+        required/><br />
         <input type="file" id='image' onChange={handleImageChange} required/><br />
-        <button style={{color:'black'}}>Register</button>
+        <button >Register</button>
       </form>
+      <div style={{marginTop:'2vh'}}>
+          <p>Already Have an Account?</p>
+          <p style={{fontWeight:'600'}}><Link to='/login'>Sign In</Link></p>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,76 @@
+.loginContainer{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-image: url('instaBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.loginForm{
+    color: black;
+    width: 20vw;
+    height: 55vh;
+    background-color: white;
+    text-align: center;
+    padding: 45px 25px;
+    border-radius: 5px;
+}
+
+.loginForm h2{
+    margin-bottom: 4vh;
+}
+
+.loginForm form input{
+    width: 100%;
+    margin-bottom: 1vh;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    border: 1px solid lightgray;
+    padding: 3px 5px;
+}
+
+.loginForm form button{
+    width: 100%;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: #0e83e2;
+    padding: 5px;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loginForm form input:focus{
+    transition: 0.3s ease;
+    border: 1px solid gray;
+}
+
+.loginForm form button:hover{
+    transition: 0.3s ease-in;
+    background-color: #0c74c8;
+}
+
+.loginForm p{
+    font-size: 0.85rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .loginForm{
+        width: 85%;
+        height: 60vh;
+    }
+
+    .loginForm h2{
+        margin-bottom: 6vh;
+    }
+
+    .loginForm form button{
+        margin-bottom: 2vh;
+    }
+}
