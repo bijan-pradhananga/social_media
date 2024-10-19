@@ -35,7 +35,7 @@ class UserController extends Controller
                 'password'        => Hash::make($request->password),
                 'image'         => $imgName
             ]);
-            $image->move('images/', $imgName);
+            $image->move(public_path('images'), $imgName);
         }
         if ($user) {
             return response()->json([

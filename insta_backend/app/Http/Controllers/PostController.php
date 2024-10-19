@@ -85,7 +85,7 @@ class PostController extends Controller
                 'caption'   => $request->caption,
                 'image'         => $imgName
             ]);
-            $image->move('posts/', $imgName);
+            $image->move(public_path('images'), $imgName);
         }
         if ($post) {
             return response()->json([
