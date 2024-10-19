@@ -3,6 +3,7 @@ import axios from 'axios'
 import { ImgPopupContext } from '../../routes/Links'
 import PostPopup from '../popup/PostPopup/PostPopup';
 import Loading from '../loading_component/Loading-Post';
+import { API } from '../../api/config';
 
 export default function ExploreBody() {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +11,7 @@ export default function ExploreBody() {
   const { imgPopup, setImgPopup, imgPopupDetails, setImgPopupDetails } = useContext(ImgPopupContext);
   const getPosts = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/posts/users');
+      const response = await axios.get(`${API.defaults.baseURL}/api/posts/users`);
       if (response.status === 200) {
         setPosts(response.data.posts);
         setIsLoading(false)

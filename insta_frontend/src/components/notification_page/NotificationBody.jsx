@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import LoadingNotifications from '../loading_component/LoadingNotifications'
+import { API } from '../../api/config'
 
 export default function NotificationBody({ user, notifications, isLoading }) {
     return (
@@ -12,7 +13,7 @@ export default function NotificationBody({ user, notifications, isLoading }) {
                     notifications.map((notification, index) => (
                         <Link to={`/profile/${notification.notifier_id}`} style={{ color: 'white' }} key={index}>
                             <div className="notification-card">
-                                <img src={`http://127.0.0.1:8000/images/${notification.image}`} alt="" srcSet="" />
+                                <img src={`${API.defaults.baseURL}/images/${notification.image}`} alt="" srcSet="" />
                                 <div className="notification-card-msg">
                                     {notification.name === user.name ? 'You' : notification.name} {notification.type === 'like' ? 'liked' : 'commented on'} your post
                                 </div>

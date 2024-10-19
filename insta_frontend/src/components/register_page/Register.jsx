@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import './register.css'
 import { Link } from 'react-router-dom';
+import { API } from '../../api/config';
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -36,7 +37,7 @@ export default function Register() {
       Object.keys(formData).forEach(key => {
         fn.append(key,formData[key]);
       });
-      const response = await axios.post('http://127.0.0.1:8000/api/users',fn);
+      const response = await axios.post(`${API.defaults.baseURL}/api/users`,fn);
       if (response.status === 200) {
         alert(response.data.message);
       }

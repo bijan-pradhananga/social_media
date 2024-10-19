@@ -4,15 +4,11 @@ import NotificationBody from './NotificationBody'
 import NotificationHeader from './NotificationHeader'
 import axios from 'axios'
 import AuthUser from '../authentication/AuthUser'
+import { API } from '../../api/config'
 const notify = async (user_id, notifier_id, type, post_id) => {
   try {
       const inputs = { user_id, notifier_id, type, post_id };
-      const response = await axios.post('http://127.0.0.1:8000/api/notifications', inputs);
-      if (response.data.message=='Notification deleted successfully') {
-        console.log('removed notification');
-      }else{
-        console.log('notified');
-      }
+      const response = await axios.post(`${API.defaults.baseURL}/api/notifications`, inputs);
   } catch (error) {
       console.error(error);
   }
@@ -25,7 +21,7 @@ export default function Notification() {
   const [isLoading,setIsLoading] = useState(true);
 const getUserNotifications = async (user_id, setNotifications) => {
   try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/notifications/${user_id}`);
+      const response = await axios.get(`${API.defaults.baseURL}/api/notifications/${user_id}`);
       if (response.status === 200) {
           setNotifications(response.data.notifications);
           setIsLoading(false)

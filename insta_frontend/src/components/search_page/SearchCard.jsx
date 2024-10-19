@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { API } from '../../api/config'
 
 export default function SearchCard({user,index}) {
   return (
@@ -7,7 +8,7 @@ export default function SearchCard({user,index}) {
     <div className="search_card" >
         <div className="search_info">
             <div className="search_image">
-                <img src={`http://127.0.0.1:8000/images/${user.image}`} alt="" />
+                <img src={`${API.defaults.baseURL}/images/${user.image}`} alt="" />
             </div>
             <div className="search_text">
                 <h3 style={{fontWeight:500}}>{user.name}</h3>

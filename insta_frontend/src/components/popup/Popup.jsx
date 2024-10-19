@@ -4,6 +4,7 @@ import './popup.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faUpload } from '@fortawesome/free-solid-svg-icons'
 import AuthUser from '../authentication/AuthUser'
+import { API } from '../../api/config'
 
 export default function Popup({ setPopup ,fetchPosts}) {
     const {user} = AuthUser()
@@ -55,7 +56,7 @@ export default function Popup({ setPopup ,fetchPosts}) {
             Object.keys(formData).forEach(key => {
                 fn.append(key, formData[key]);
             });
-            const response = await axios.post('http://127.0.0.1:8000/api/posts', fn);
+            const response = await axios.post(`${API.defaults.baseURL}/api/posts`, fn);
             if (response.status === 200) {
                 alert(response.data.message);
                 fetchPosts();
@@ -92,7 +93,7 @@ export default function Popup({ setPopup ,fetchPosts}) {
                     <form action="" method="post" onSubmit={handleSubmit}>
                         <div className="popup-body">
                             <div className="popup-info">
-                                <img src={`http://127.0.0.1:8000/images/${user.image}`} alt="" />
+                                <img src={`${API.defaults.baseURL}/images/${user.image}`} alt="" />
                                 <span>{user.name}</span>
                             </div>
                             <div className="popup-body-caption">

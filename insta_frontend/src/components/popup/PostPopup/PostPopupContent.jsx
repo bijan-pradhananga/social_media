@@ -5,6 +5,7 @@ import PostPopupComments from './PostPopupComments'
 import PostPopupContentHeader from './PostPopupContentHeader'
 import AuthUser from '../../authentication/AuthUser'
 import axios from 'axios'
+import { API } from '../../../api/config'
 
 export default function PostPopupContent({ post, setImgPopup }) {
     const { user } = AuthUser();
@@ -14,7 +15,7 @@ export default function PostPopupContent({ post, setImgPopup }) {
     const getComments = async (post_id) =>{
         try {
             setIsLoading(true)
-            const response = await axios.get(`http://127.0.0.1:8000/api/comments/${post.id}`);
+            const response = await axios.get(`${API.defaults.baseURL}/api/comments/${post.id}`);
             setComments(response.data.comments);
             setIsLoading(false)
         } catch (error) {
@@ -24,7 +25,7 @@ export default function PostPopupContent({ post, setImgPopup }) {
 
     const postComment = async (user_id,post_id,content) =>{
         try {
-            const response = await axios.post(`http://127.0.0.1:8000/api/comments`,{user_id,post_id,content});
+            const response = await axios.post(`${API.defaults.baseURL}/api/comments`,{user_id,post_id,content});
             if (response.status==200) {
                 getComments(post_id);
             }
@@ -41,7 +42,7 @@ export default function PostPopupContent({ post, setImgPopup }) {
         <div className="popup-txtPart">
             <Link to={`/profile/${post.user_id}`} onClick={() => { setImgPopup(false) }}>
                 <div className='popup-content-header' style={{ color: 'white' }}>
-                    <img src={`http://127.0.0.1:8000/images/${post.user_img}`} alt={post.user_img} />
+                    <img src={`${API.defaults.baseURL}/images/${post.user_img}`} alt={post.user_img} />
                     <span>{post.username}</span>
                 </div>
             </Link>

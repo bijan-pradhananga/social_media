@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProfileButton from './ProfileButton'
 import axios from 'axios';
 import LoadingProfileHeader from '../loading_component/LoadingProfileHeader';
+import { API } from '../../api/config';
 
 export default function ProfileHeader({ user, cUser, id, userPosts, isLoading }) {
   const [followerCount, setFollowerCount] = useState(0);
@@ -9,7 +10,7 @@ export default function ProfileHeader({ user, cUser, id, userPosts, isLoading })
 
   const fetchFollowDetails = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/followers/followCount/${id}`);
+      const response = await axios.get(`${API.defaults.baseURL}/api/followers/followCount/${id}`);
       setFollowerCount(response.data.follower_count);
       setFollowingCount(response.data.following_count);
     } catch (error) {
@@ -27,7 +28,7 @@ export default function ProfileHeader({ user, cUser, id, userPosts, isLoading })
       ) : (
         <div className='profile-header'>
           <div className="profile-img">
-            <img src={`http://127.0.0.1:8000/images/${user.image}`} />
+            <img src={`${API.defaults.baseURL}/images/${user.image}`} />
           </div>
           <div className='profile-info'>
             <div style={{ display: 'flex', marginBottom: '0.6rem' }}>

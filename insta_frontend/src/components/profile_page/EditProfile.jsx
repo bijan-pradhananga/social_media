@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import AuthUser from '../authentication/AuthUser';
+import { API } from '../../api/config';
 export default function EditProfile() {
     const { user } = AuthUser()
-    const [imgUrl, setImgUrl] = useState(`http://127.0.0.1:8000/images/${user.image}`)
+    const [imgUrl, setImgUrl] = useState(`${API.defaults.baseURL}/images/${user.image}`)
     const [formData, setFormData] = useState({
         name: user.name,
         username: user.username,
@@ -39,7 +40,7 @@ export default function EditProfile() {
 
     const updateToken = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/users/${user.id}`);
+            const response = await axios.get(`${API.defaults.baseURL}/api/users/${user.id}`);
             if (response.status === 200) {
                 sessionStorage.setItem('user', JSON.stringify(response.data.user));
             }
@@ -55,7 +56,7 @@ export default function EditProfile() {
             fn.append(key, formData[key]);
           }
         try {
-          const response = await axios.post(`http://127.0.0.1:8000/api/users/${user.id}`,fn);
+          const response = await axios.post(`${API.defaults.baseURL}/api/users/${user.id}`,fn);
           if (response.status === 200) {
             updateToken();
             alert('Profile updated successfully')

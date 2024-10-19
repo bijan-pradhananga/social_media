@@ -5,6 +5,7 @@ import './profile.css'
 import ProfileBody from './ProfileBody';
 import ProfileHeader from './ProfileHeader';
 import Loading from '../loading_component/Loading-Post';
+import { API } from '../../api/config';
 
 export default function Profile({ cUser }) {
   const { id } = useParams();
@@ -13,7 +14,7 @@ export default function Profile({ cUser }) {
   const [isLoading, setIsLoading] = useState(true);
   const getUser = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/users/${id}`);
+      const response = await axios.get(`${API.defaults.baseURL}/api/users/${id}`);
       if (response.status === 200) {
         setUser(response.data.user);
         setIsLoading(false);
@@ -25,7 +26,7 @@ export default function Profile({ cUser }) {
 
   const getUserPosts = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/posts/users/${id}`);
+      const response = await axios.get(`${API.defaults.baseURL}/api/posts/users/${id}`);
       if (response.status === 200) {
         setUserPosts(response.data.posts);
         setIsLoading(false);

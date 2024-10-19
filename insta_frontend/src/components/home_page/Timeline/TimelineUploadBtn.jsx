@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import AuthUser from '../../authentication/AuthUser';
+import { API } from '../../../api/config';
 export default function TimelineUploadBtn({ setPopup }) {
   const {user,token,logout} = AuthUser();
   const logoutUser = () =>{
@@ -13,7 +14,7 @@ export default function TimelineUploadBtn({ setPopup }) {
 
   return (
     <div className="timeline_upload">
-      <img src={`http://127.0.0.1:8000/images/${user.image}`} alt="" />
+      <img src={`${API.defaults.baseURL}/images/${user.image}`} alt="" />
       <div onClick={() => { setPopup(true) }} className="timeline_upload_input">
         Create a new post
       </div>

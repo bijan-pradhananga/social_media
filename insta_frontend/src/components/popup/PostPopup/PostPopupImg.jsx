@@ -1,9 +1,10 @@
 import React from 'react'
+import { API } from '../../../api/config'
 
 export default function PostPopupImg({post}) {
     return (
         <div className='popup-imgPart'>
-            <img src={`http://127.0.0.1:8000/posts/${post.image}`} alt={post.image} />
+            <img src={`${API.defaults.baseURL}/posts/${post.image}`} alt={post.image} />
         </div>
     )
 }

@@ -6,6 +6,7 @@ import TimelineCard from './TimelineCard/TimelineCard';
 import PostPopup from '../../popup/PostPopup/PostPopup';
 import { ImgPopupContext } from '../../../routes/Links'
 import LoadingTimelinePost from '../../loading_component/LoadingTimelinePost';
+import { API } from '../../../api/config';
 
 export default function timeline({ user }) {
   const [timelinePosts, setTimelinePosts] = useState([]);
@@ -27,7 +28,7 @@ export default function timeline({ user }) {
   };
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/posts/follows/${user.id}`);
+      const response = await axios.get(`${API.defaults.baseURL}/api/posts/follows/${user.id}`);
       setTimelinePosts(response.data.posts);
       setIsLoading(false)
     } catch (error) {

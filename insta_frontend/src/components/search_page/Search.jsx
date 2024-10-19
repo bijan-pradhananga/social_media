@@ -5,6 +5,7 @@ import SearchResults from './SearchResults'
 import ExploreBody from '../explore_page/ExploreBody'
 import SearchHeader from './SearchHeader'
 import LoadingSearch from '../loading_component/LoadingSearch'
+import { API } from '../../api/config'
 
 export default function Search() {
   const [search, setSearch] = useState('')
@@ -18,7 +19,7 @@ export default function Search() {
 
   const searchUser = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/users/search/${search.trim()}`);
+      const response = await axios.get(`${API.defaults.baseURL}/api/users/search/${search.trim()}`);
       setSearchResults(response.data.users);
       setEmpty(false)
       setIsLoading(false)
